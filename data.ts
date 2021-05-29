@@ -140,8 +140,8 @@ const projects: Project[] = [
     name: "My Personal Website",
     image_path:
       "https://res.cloudinary.com/rangdra/image/upload/v1617126020/img-projects/porto_r8jypd.png",
-    deployed_url: "https://rapangestu.vercel.app/",
-    github_url: "https://github.com/rangdra/new-portofolio",
+    deployed_url: "https://rangdra2.vercel.app/",
+    github_url: "https://github.com/rangdra/portofolio-2021",
     category: ["nextjs"],
     description:
       "Website pribadi saya di buat dengan Next Js dan Tailwind CSS.",
