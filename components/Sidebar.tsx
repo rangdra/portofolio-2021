@@ -25,8 +25,8 @@ const Sidebar = () => {
         Web Developer
       </p>
       <a
-        href="/assets/fundamental-frontend-web.pdf"
-        download="fundamental-frontend-web.pdf"
+        href="/assets/Rangdra Pangestu.pdf"
+        download="Rangdra Pangestu.pdf"
         className="flex items-center justify-center px-2 py-1 my-2 transition duration-200 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:hover:bg-gray-500 hover:bg-cyan-500 hover:text-white"
       >
         <GiTie className="w-6 h-6" />
@@ -62,7 +62,7 @@ const Sidebar = () => {
           <GoLocation className="mr-2" /> <span>Bekasi,Indonesia </span>
         </div>
         <p className="my-2 ">rangdra2@gmail.com </p>
-        <p className="my-2">0838-****-2547 </p>
+        <p className="my-2">+6283890062547 </p>
       </div>
 
       <button
