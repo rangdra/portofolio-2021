@@ -5,7 +5,12 @@ export interface Skill {
   bgColor?: string;
 }
 
-export type Category = "react" | "nextjs" | "html-css-js" | "mern";
+export type Category =
+  | 'react'
+  | 'nextjs'
+  | 'html-css-js'
+  | 'mern'
+  | 'typescript';
 
 export interface Project {
   id: number;

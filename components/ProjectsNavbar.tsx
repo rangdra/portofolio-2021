@@ -1,15 +1,15 @@
-import { FunctionComponent } from "react";
-import { Category } from "../types";
+import { FunctionComponent } from 'react';
+import { Category } from '../types';
 
 export const NavItem: FunctionComponent<{
-  value: Category | "all";
+  value: Category | 'all';
   handleFilterCategory: Function;
   active: string;
 }> = ({ value, handleFilterCategory, active }) => {
   return (
     <li
       className={`${
-        active === value && "text-cyan-500 "
+        active === value && 'text-cyan-500 '
       } capitalize cursor-pointer hover:text-cyan-500 font-medium hover:underline transition duration-200`}
       onClick={() => handleFilterCategory(value)}
     >
@@ -29,6 +29,7 @@ const ProjectsNavbar: FunctionComponent<{
       <NavItem value="nextjs" {...props} />
       <NavItem value="html-css-js" {...props} />
       <NavItem value="mern" {...props} />
+      <NavItem value="typescript" {...props} />
     </div>
   );
 };
