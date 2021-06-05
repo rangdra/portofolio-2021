@@ -174,7 +174,7 @@ const projects: Project[] = [
     id: 15,
     name: 'HOLAEVENTS.',
     image_path:
-      'https://res.cloudinary.com/rangdra/image/upload/v1609589659/img-projects/staycation/sc1_b6rvfz.png',
+      'https://res.cloudinary.com/djwe2thpu/image/upload/v1622917421/apture_iewvry.png',
     deployed_url: 'https://rpevents.vercel.app/',
     github_url: 'https://github.com/rangdra/rp-events',
     category: ['nextjs', 'typescript'],
