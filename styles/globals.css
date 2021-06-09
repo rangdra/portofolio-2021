@@ -1,46 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  background-color: black;
-  font-family: "Quicksand", sans-serif !important;
-  @apply text-gray-800;
+    background-color: black;
+    font-family: 'Quicksand', sans-serif !important;
+    @apply text-gray-800;
 }
 
 @layer base {
-  .animation-spin {
-    animation: spin 3s linear infinite;
-  }
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
+    .animation-spin {
+        animation: spin 5s linear infinite;
     }
-    to {
-      transform: rotate(360deg);
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
-  }
 
-  ::-webkit-scrollbar-thumb {
-    /* background-image: linear-gradient(to right bottom, #22d3ee, #6366f1); */
-    @apply bg-gradient-to-br from-cyan-300 to-indigo-500;
-  }
+    ::-webkit-scrollbar-thumb {
+        /* background-image: linear-gradient(to right bottom, #22d3ee, #6366f1); */
+        @apply bg-gradient-to-br from-cyan-300 to-indigo-500;
+    }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 0px;
-  }
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 0px;
+    }
 
-  .toggle_dot {
-    /* top: -0.1rem; */
-    left: -0.25rem;
-    transition: all 0.3s ease-in-out;
-  }
+    .toggle_dot {
+        /* top: -0.1rem; */
+        left: -0.25rem;
+        transition: all 0.3s ease-in-out;
+    }
 
-  input:checked ~ .toggle_dot {
-    transform: translateX(60%);
-    @apply bg-cyan-400;
-  }
+    input:checked ~ .toggle_dot {
+        transform: translateX(60%);
+        @apply bg-cyan-400;
+    }
 }
