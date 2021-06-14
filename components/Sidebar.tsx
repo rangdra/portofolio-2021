@@ -25,8 +25,8 @@ const Sidebar = () => {
                 Web Developer
             </p>
             <a
-                href="/assets/Rangdra Pangestu.pdf"
-                download="Rangdra Pangestu.pdf"
+                href="/assets/CV.pdf"
+                download="CV.pdf"
                 className="flex items-center justify-center px-2 py-1 my-2 transition duration-200 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:hover:bg-gray-500 hover:bg-cyan-500 hover:text-white"
             >
                 <GiTie className="w-6 h-6" />
