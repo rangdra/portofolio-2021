@@ -24,9 +24,16 @@ const Sidebar = () => {
             <p className="px-2 py-1 my-3 font-medium bg-gray-200 rounded-full dark:bg-dark-200 dark:bg-ba-200 dark:bg-black-500">
                 Web Developer
             </p>
-            <a
+            {/* <a
                 href="/assets/CV.pdf"
                 download="CV.pdf"
+                className="flex items-center justify-center px-2 py-1 my-2 transition duration-200 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:hover:bg-gray-500 hover:bg-cyan-500 hover:text-white"
+            >
+                <GiTie className="w-6 h-6" />
+                <span>Download CV</span>
+            </a> */}
+            <a
+                href="https://rapangestu.vercel.app/file/Rangdra_Pangestu_Resume"
                 className="flex items-center justify-center px-2 py-1 my-2 transition duration-200 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:hover:bg-gray-500 hover:bg-cyan-500 hover:text-white"
             >
                 <GiTie className="w-6 h-6" />
