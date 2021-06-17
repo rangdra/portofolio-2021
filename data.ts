@@ -6,10 +6,8 @@ import {
     SiNodeDotJs,
     SiSass,
     SiTailwindcss,
-    SiTypescript,
 } from 'react-icons/si';
 import { AiFillHtml5, AiOutlineApi } from 'react-icons/ai';
-import { BsCircleFill } from 'react-icons/bs';
 
 import { Project, Service, Skill } from './types';
 
@@ -17,73 +15,17 @@ const services: Service[] = [
     {
         Icon: RiComputerLine,
         title: 'Frontend Development',
-        about: 'I can build a beautiful and scalable SPA using <b> HTML</b>,<b>CSS</b>   and <b>React.js</b> ',
+        about: 'Membangun SPA yang indah dan responsive menggunakan <b>HTML, CSS </b> dan <b>React JS</b>.',
     },
     {
         Icon: FaServer,
         title: 'Backend  Development',
-        about: 'handle database, server, api using <b>Express </b> & other popular frameworks',
+        about: 'handle database, server, api menggunakan <b>Express </b> & populer frameworks lainnya.',
     },
     {
         Icon: AiOutlineApi,
         title: 'API Development',
-        about: 'I can develop robust  REST API using <b>Node API</b> ',
-    },
-];
-
-const languages: Skill[] = [
-    {
-        Icon: BsCircleFill,
-        name: 'Python',
-        level: '100%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'Java Script',
-        level: '100%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'React Native',
-        level: '100%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'React',
-        level: '100%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'Django',
-        level: '100%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'Bootstrap',
-        level: '80%',
-    },
-];
-
-const tools: Skill[] = [
-    {
-        Icon: BsCircleFill,
-        name: 'Figma',
-        level: '85%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'Photoshop',
-        level: '45%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'Illustrator',
-        level: '60%',
-    },
-    {
-        Icon: BsCircleFill,
-        name: 'Framer',
-        level: '45%',
+        about: 'Membangun dan Mengembangkan REST API menggunakan <b>Node API</b>.',
     },
 ];
 
@@ -98,11 +40,6 @@ const frontendSkills: Skill[] = [
         name: 'React: CRA and NextJs',
         level: '100%',
     },
-    // {
-    //     Icon: SiTypescript,
-    //     name: 'Typescript',
-    //     level: '100%',
-    // },
     {
         Icon: SiTailwindcss,
         name: 'Tailwind CSS',
@@ -123,11 +60,6 @@ const frontendSkills: Skill[] = [
 const backendSkills: Skill[] = [
     {
         Icon: SiNodeDotJs,
-        name: 'Node Js',
-        level: '100%',
-    },
-    {
-        Icon: SiNodeDotJs,
         name: 'ExpressJs',
         level: '100%',
     },
@@ -143,7 +75,7 @@ const projects: Project[] = [
         id: 1,
         name: 'My Personal Website',
         image_path:
-            'https://res.cloudinary.com/rangdra/image/upload/v1617126020/img-projects/porto_r8jypd.png',
+            'https://res.cloudinary.com/rangdra/image/upload/v1623930334/img-projects/porto_mmygl3.png',
         deployed_url: 'https://rangdrap.vercel.app/',
         github_url: 'https://github.com/rangdra/portofolio-2021',
         category: ['nextjs'],
@@ -320,4 +252,4 @@ const projects: Project[] = [
     },
 ];
 
-export { tools, languages, services, projects, frontendSkills, backendSkills };
+export { services, projects, frontendSkills, backendSkills };

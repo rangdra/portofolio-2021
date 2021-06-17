@@ -11,7 +11,7 @@ const Sidebar = () => {
     return (
         <>
             <Image
-                src="/icon-128x128.png"
+                src="/profile.jpg"
                 width={128}
                 height={128}
                 alt="avatar"

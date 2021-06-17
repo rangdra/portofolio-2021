@@ -14,19 +14,19 @@ const Home = () => {
             exit="exit"
         >
             <Head>
-                <title>Portofolio | Rangdra Pangestu</title>
+                <title>About | Rangdra Pangestu</title>
             </Head>
             <h6 className="my-3 text-base font-medium">
-                hello, I am a person who is very interested in web-based
-                application development. My specialty located on the frontend.
-                That is to make the web beautiful, responsive and has good web
-                performance.
+                Hello, saya adalah seorang yang sangat tertarik dengan
+                pengembangan aplikasi berbasis web. Spesialisasi saya terletak
+                di sisi frontend. Yaitu membuat web menjadi indah, responsive
+                dan memiliki performance web yang baik.
             </h6>{' '}
             <span className="font-medium">
-                To support the skills above I like to follow trainings on web
-                development for always updates on the development of the current
-                digital world that can be used to support the development of the
-                company where I work.😄
+                Untuk mendukung skill diatas saya gemar mengikuti
+                pelatihan-pelatihan tentang web development untuk selalu update
+                perkembangan dunia digital saat ini yang dapat digunakan untuk
+                mendukung perkembangan perusahaan tempat saya bekerja.😄
             </span>
             <div className="p-4 mt-5 bg-gray-300 dark:bg-dark-100 flex-grow ml-[-1.5rem] mr-[-1.5rem]">
                 <h6 className="my-3 text-xl font-bold tracking-wide">
