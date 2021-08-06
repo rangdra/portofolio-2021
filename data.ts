@@ -175,7 +175,7 @@ const projects: Project[] = [
     id: 6,
     name: 'Shopping Cart',
     image_path:
-      'https://res.cloudinary.com/rangdra/image/upload/v1628271559/img-projects/shopping_j6sphw.png',
+      'https://res.cloudinary.com/rangdra/image/upload/v1628272045/img-projects/shopping_tjksvo.png',
     deployed_url: 'https://rp-shopping-cart.vercel.app/',
     github_url: 'https://github.com/rangdra/shopping-cart',
     category: ['typescript', 'nextjs'],
