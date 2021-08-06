@@ -83,7 +83,7 @@ const projects: Project[] = [
     category: ['nextjs'],
     description:
       'Website pribadi saya di buat dengan Next Js dan Tailwind CSS.',
-    key_points: ['Next Js', 'Tailwind', 'Framer Motion'],
+    key_points: ['Next JS', 'Tailwind', 'Framer Motion'],
   },
   {
     id: 2,
@@ -117,7 +117,7 @@ const projects: Project[] = [
     github_url: 'https://github.com/rangdra/rp-events',
     category: ['nextjs', 'typescript'],
     description: 'Mencari events-events terbaru.',
-    key_points: ['Next js', 'Typescript', 'Tailwind'],
+    key_points: ['Next JS', 'Strapi', 'Typescript', 'Tailwind'],
   },
   {
     id: 4,
@@ -167,9 +167,21 @@ const projects: Project[] = [
       'https://res.cloudinary.com/rangdra/image/upload/v1627389119/social_app/social_wynsvo.png',
     deployed_url: 'https://rp-socialapp.vercel.app/',
     github_url: 'https://github.com/rangdra/socialapp-v2',
-    category: ['react', 'mern'],
-    description: 'MERN stack & Tailwind CSS',
-    key_points: ['Mongo DB', 'React', 'Express', 'Node', 'Tailwind'],
+    category: ['nextjs'],
+    description: 'Next JS & Tailwind CSS',
+    key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
+  },
+  {
+    id: 6,
+    name: 'Shopping Cart',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1628271559/img-projects/shopping_j6sphw.png',
+    deployed_url: 'https://rp-shopping-cart.vercel.app/',
+    github_url: 'https://github.com/rangdra/shopping-cart',
+    category: ['typescript', 'nextjs'],
+    description:
+      'Shopping Cart, Filter: Search produk, Ascending Descending produk, Rating produk dll',
+    key_points: ['Next JS', 'Typescript', 'Bootstrap', 'Context'],
   },
 
   {
@@ -217,7 +229,7 @@ const projects: Project[] = [
     github_url: 'https://github.com/rangdra/next-google-clone',
     category: ['nextjs'],
     description: 'Nextjs google clone',
-    key_points: ['Nextjs', 'Tailwind'],
+    key_points: ['Next JS', 'Tailwind'],
   },
   {
     id: 11,
@@ -228,7 +240,7 @@ const projects: Project[] = [
     github_url: 'https://github.com/rangdra/movies-nextjs',
     category: ['nextjs'],
     description: 'Movies app Next Js',
-    key_points: ['Nextjs', 'Tailwind'],
+    key_points: ['Next JS', 'Tailwind'],
   },
   {
     id: 12,
