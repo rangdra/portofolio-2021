@@ -169,7 +169,7 @@ const projects: Project[] = [
     github_url: 'https://github.com/rangdra/socialapp-v2',
     category: ['mern', 'nextjs'],
     description:
-      'CRUD Post, Authentication, Edit Profile, Styling with Tailwind',
+      'CRUD Post, like-unlike, CRD comment, Authentication, Edit Profile, Styling with Tailwind',
     key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
   },
   {
