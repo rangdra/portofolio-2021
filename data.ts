@@ -167,9 +167,22 @@ const projects: Project[] = [
       'https://res.cloudinary.com/rangdra/image/upload/v1627389119/social_app/social_wynsvo.png',
     deployed_url: 'https://rp-socialapp.vercel.app/',
     github_url: 'https://github.com/rangdra/socialapp-v2',
-    category: ['nextjs'],
-    description: 'Next JS & Tailwind CSS',
+    category: ['mern', 'nextjs'],
+    description:
+      'CRUD Post, Authentication, Edit Profile, Styling with Tailwind',
     key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
+  },
+  {
+    id: 16,
+    name: 'TANYAJAWAB',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1629398993/img-projects/QWQ_rjvg2c.png',
+    deployed_url: 'https://rp-tanyajawab.vercel.app/',
+    github_url: 'https://github.com/rangdra/mern-tanyajawab-client',
+    category: ['mern', 'nextjs', 'typescript'],
+    description:
+      'CRUD Question,CRD Answer, Authentication, Edit Profile, Styling with Tailwind',
+    key_points: ['MERN', 'Next JS', 'Tailwind', 'Typescript'],
   },
   {
     id: 6,
@@ -180,7 +193,7 @@ const projects: Project[] = [
     github_url: 'https://github.com/rangdra/shopping-cart',
     category: ['typescript', 'nextjs'],
     description:
-      'Shopping Cart, Filter: Search produk, Ascending Descending produk, Rating produk dll',
+      'Shopping Cart, Filter: Search product, Ascending Descending product, Rating product dll',
     key_points: ['Next JS', 'Typescript', 'Bootstrap', 'Context'],
   },
 
