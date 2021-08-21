@@ -278,6 +278,17 @@ const projects: Project[] = [
     key_points: ['HTML', 'CSS', 'Bootstrap', 'AOS'],
   },
   {
+    id: 17,
+    name: 'Landing page Furniture Shop',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1629566506/img-projects/furniture-img_xya7ed.png',
+    deployed_url: 'https://rangdra.github.io/landing-page-furniture-shop/',
+    github_url: 'https://github.com/rangdra/landing-page-furniture-shop',
+    category: ['html-css-js'],
+    description: 'Landing page Furniture Shop with dark theme',
+    key_points: ['HTML', 'CSS', 'JS', 'AOS'],
+  },
+  {
     id: 14,
     name: 'Navbar Responsive',
     image_path:
