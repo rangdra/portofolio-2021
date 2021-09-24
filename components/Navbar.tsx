@@ -1,6 +1,6 @@
-import { useState, useEffect, FunctionComponent } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState, useEffect, FunctionComponent } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const NavItem: FunctionComponent<{
   active: string;
@@ -23,13 +23,13 @@ const NavItem: FunctionComponent<{
 };
 
 const Navbar = () => {
-  const [active, setActive] = useState<string>("");
+  const [active, setActive] = useState<string>('');
   const { pathname } = useRouter();
 
   useEffect(() => {
-    if (pathname === "/") setActive("About");
-    if (pathname === "/projects") setActive("Projects");
-    if (pathname === "/resume") setActive("Resume");
+    if (pathname === '/') setActive('About');
+    if (pathname === '/projects') setActive('What i am made');
+    if (pathname === '/resume') setActive('Resume');
   }, []);
   return (
     <div className="flex justify-between px-5 py-3 my-3">
@@ -47,7 +47,7 @@ const Navbar = () => {
         <NavItem
           active={active}
           setActive={setActive}
-          name="Projects"
+          name="What i am made"
           route="/projects"
         />
       </div>

@@ -8,7 +8,7 @@ export interface Skill {
 export type Category =
   | 'react'
   | 'nextjs'
-  | 'html-css-js'
+  | 'landing page'
   | 'mern'
   | 'typescript';
 

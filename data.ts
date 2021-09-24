@@ -7,7 +7,7 @@ import {
   SiSass,
   SiTailwindcss,
 } from 'react-icons/si';
-import { AiFillHtml5, AiOutlineApi } from 'react-icons/ai';
+import { AiFillHtml5, AiOutlineApi, AiOutlineAntDesign } from 'react-icons/ai';
 
 import { Project, Service, Skill } from './types';
 
@@ -16,18 +16,23 @@ const services: Service[] = [
     Icon: RiComputerLine,
     title: 'Frontend Development',
     about:
-      'Membangun SPA yang indah dan responsive menggunakan <b>HTML, CSS </b> dan <b>React JS</b>.',
+      'Membangun Single Page Application menggunakan <b>HTML, CSS </b> dan <b>React JS</b>.',
+    // about:
+    //   'Build beautiful and responsive SPAs using <b>HTML, CSS </B> and <b>React JS</b>.',
   },
   {
     Icon: FaServer,
     title: 'Backend  Development',
     about:
       'handle database, server, api menggunakan <b>Express </b> & populer frameworks lainnya.',
+    // about:
+    //   'handle database, server, api using <b>Express</b> & other popular frameworks.',
   },
   {
     Icon: AiOutlineApi,
     title: 'API Development',
     about: 'Membangun dan Mengembangkan REST API menggunakan <b>Node API</b>.',
+    // about: 'Build and Develop REST API using <b>Node API</b>.',
   },
 ];
 
@@ -50,6 +55,11 @@ const frontendSkills: Skill[] = [
   {
     Icon: SiBootstrap,
     name: 'Bootstrap',
+    level: '100%',
+  },
+  {
+    Icon: AiOutlineAntDesign,
+    name: 'Ant Design',
     level: '100%',
   },
   {
@@ -203,7 +213,7 @@ const projects: Project[] = [
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1609568968/img-projects/c19track_l8bxh5.png',
     deployed_url: 'https://covid19-tracker-rp.netlify.app/',
-    category: ['html-css-js'],
+    category: ['landing page'],
     github_url: 'https://github.com/rangdra/covid19-tracker',
     description:
       'Website perkembangan covid19 diindonesia dengan dengan data dari API. Website dibuat dengan HTML, CSS ,BOOTSTRAP dengan sedikit sentuhan javascript',
@@ -262,7 +272,7 @@ const projects: Project[] = [
       'https://res.cloudinary.com/rangdra/image/upload/v1617695725/img-projects/staycation_fosuvz.png',
     deployed_url: 'https://landingpage-staycation.netlify.app/',
     github_url: '#',
-    category: ['html-css-js'],
+    category: ['landing page'],
     description: 'Landing page StayCation',
     key_points: ['HTML', 'CSS', 'SASS', 'AOS'],
   },
@@ -273,7 +283,7 @@ const projects: Project[] = [
       'https://res.cloudinary.com/rangdra/image/upload/v1617710435/img-projects/food_ynwucd.png',
     deployed_url: 'https://landingpage-foodrecipes.netlify.app/',
     github_url: '#',
-    category: ['html-css-js'],
+    category: ['landing page'],
     description: 'Landing page StayCation',
     key_points: ['HTML', 'CSS', 'Bootstrap', 'AOS'],
   },
@@ -282,11 +292,21 @@ const projects: Project[] = [
     name: 'Landing page Furniture Shop',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1629566506/img-projects/furniture-img_xya7ed.png',
-    deployed_url: 'https://rangdra.github.io/landing-page-furniture-shop/',
+    deployed_url: 'https://angry-dijkstra-f0bd61.netlify.app/',
     github_url: 'https://github.com/rangdra/landing-page-furniture-shop',
-    category: ['html-css-js'],
+    category: ['landing page'],
     description: 'Landing page Furniture Shop with dark theme',
     key_points: ['HTML', 'CSS', 'JS', 'AOS'],
+  },
+  {
+    id: 17,
+    name: 'Go-Travel',
+    image_path: '/go-travel.PNG',
+    deployed_url: 'https://angry-nightingale-2dc060.netlify.app/',
+    github_url: 'https://github.com/rangdra/travel-landing-page',
+    category: ['landing page'],
+    description: 'Landing page',
+    key_points: ['HTML', 'CSS', 'JS'],
   },
   {
     id: 14,
@@ -295,7 +315,7 @@ const projects: Project[] = [
       'https://res.cloudinary.com/rangdra/image/upload/v1617709932/img-projects/navbar_ldtgeh.png',
     deployed_url: 'https://navbar-responsive22.netlify.app/',
     github_url: '#',
-    category: ['html-css-js'],
+    category: ['landing page'],
     description: 'Navbar Responsive',
     key_points: ['HTML', 'CSS', 'JS'],
   },

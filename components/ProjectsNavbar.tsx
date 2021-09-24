@@ -27,9 +27,9 @@ const ProjectsNavbar: FunctionComponent<{
       <NavItem value="all" {...props} />
       <NavItem value="react" {...props} />
       <NavItem value="nextjs" {...props} />
-      <NavItem value="html-css-js" {...props} />
       <NavItem value="mern" {...props} />
-      <NavItem value="typescript" {...props} />
+      <NavItem value="typescript" {...props} />{' '}
+      <NavItem value="landing page" {...props} />
     </div>
   );
 };
