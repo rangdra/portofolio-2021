@@ -17,9 +17,9 @@ const Home = () => {
         <title>About | Rangdra Pangestu</title>
       </Head>
       <h6 className="my-3 text-base font-medium">
-        Hello, saya adalah seorang yang sangat tertarik dengan web development.
-        Spesialisasi saya terletak di sisi frontend. Yaitu membuat web menjadi
-        indah, responsive dan memiliki performance web yang baik.
+        Hi, saya adalah seorang yang sangat tertarik dengan web development.
+        Spesialisasi saya terletak di sisi frontend yaitu membuat web menjadi
+        indah, responsive dan memiliki performance yang baik.
         {/* Hello, I am a person who is very interested in web development. My
         specialty lies on the frontend side. That is to make the web beautiful,
         responsive and have good web performance. */}

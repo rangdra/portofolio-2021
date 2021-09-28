@@ -1,19 +1,19 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import ProjectCard from "../components/ProjectCard";
-import ProjectsNavbar from "../components/ProjectsNavbar";
-import { projects as projectsData } from "../data";
-import { Category } from "../types";
-import { stagger, fadeInUp, routeAnimations } from "../animations";
-import Head from "next/head";
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import ProjectCard from '../components/ProjectCard';
+import ProjectsNavbar from '../components/ProjectsNavbar';
+import { projects as projectsData } from '../data';
+import { Category } from '../types';
+import { stagger, fadeInUp, routeAnimations } from '../animations';
+import Head from 'next/head';
 
-const Projects = () => {
+const Portofolio = () => {
   const [projects, setProjects] = useState(projectsData);
-  const [active, setActive] = useState("all");
+  const [active, setActive] = useState('all');
   const [showDetail, setShowDetail] = useState<number | null>(null);
 
-  const handleFilterCategory = (category: Category | "all") => {
-    if (category === "all") {
+  const handleFilterCategory = (category: Category | 'all') => {
+    if (category === 'all') {
       setProjects(projectsData);
       setActive(category);
       return;
@@ -34,7 +34,7 @@ const Projects = () => {
       className="px-5 py-2 h-[70vh] overflow-y-scroll"
     >
       <Head>
-        <title>Projects | Rangdra Pangestu</title>
+        <title>Portofolio | Rangdra Pangestu</title>
       </Head>
       <ProjectsNavbar
         handleFilterCategory={handleFilterCategory}
@@ -64,4 +64,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Portofolio;
