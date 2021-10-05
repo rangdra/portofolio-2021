@@ -208,6 +208,19 @@ const projects: Project[] = [
   },
 
   {
+    id: 19,
+    name: 'MGpedia - Final Project',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1633332200/img-projects/mg-pedia_muz4n2.png',
+    deployed_url: 'https://mg-pedia.netlify.app/',
+    github_url: '#',
+    category: ['react'],
+    description:
+      'Ini adalah Final Project saat saya mengikuti Jabar Coding Camp kelas React Js',
+    key_points: ['React', 'ANT design', 'Axios', 'Context'],
+  },
+
+  {
     id: 7,
     name: 'Covid19 Tracker',
     image_path:
@@ -299,7 +312,7 @@ const projects: Project[] = [
     key_points: ['HTML', 'CSS', 'JS', 'AOS'],
   },
   {
-    id: 17,
+    id: 18,
     name: 'Go-Travel',
     image_path: '/go-travel.PNG',
     deployed_url: 'https://angry-nightingale-2dc060.netlify.app/',
