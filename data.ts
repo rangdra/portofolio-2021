@@ -119,7 +119,7 @@ const projects: Project[] = [
     key_points: ['Mongo DB', 'React', 'Express', 'Node', 'Bootstrap'],
   },
   {
-    id: 15,
+    id: 4,
     name: 'HOLAEVENTS.',
     image_path:
       'https://res.cloudinary.com/djwe2thpu/image/upload/v1622917421/apture_iewvry.png',
@@ -130,7 +130,7 @@ const projects: Project[] = [
     key_points: ['Next JS', 'Strapi', 'Typescript', 'Tailwind'],
   },
   {
-    id: 4,
+    id: 5,
     name: 'Social App',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1617125498/img-projects/socialapp2_een01b.png',
@@ -159,19 +159,19 @@ const projects: Project[] = [
   //     description: 'MERN stack & tailwind css',
   //     key_points: ['Mongo DB', 'React', 'Express', 'Node', 'Tailwind'],
   // },
-  // {
-  //     id: 6,
-  //     name: 'Realtime Chat App',
-  //     image_path:
-  //         'https://res.cloudinary.com/rangdra/image/upload/v1617644056/img-projects/chattapp_xxo1hu.png',
-  //     deployed_url: 'https://rpchatapp.netlify.app/',
-  //     github_url: '#',
-  //     category: ['react'],
-  //     description: 'Realtime Chat App with Socket IO and Material UI',
-  //     key_points: ['React', 'Socket IO', 'Material UI'],
-  // },
   {
-    id: 5,
+    id: 6,
+    name: 'Realtime Chat App',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1634282285/img-projects/chat2_tca8kc.png',
+    deployed_url: 'https://rpchatapp.netlify.app/',
+    github_url: 'https://github.com/rangdra/rp-chat-app',
+    category: ['react'],
+    description: 'Realtime Chat App, Socket IO, Ant Design',
+    key_points: ['React', 'Socket IO', 'Ant design'],
+  },
+  {
+    id: 7,
     name: 'Social App V2',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1627389119/social_app/social_wynsvo.png',
@@ -183,7 +183,7 @@ const projects: Project[] = [
     key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
   },
   {
-    id: 16,
+    id: 8,
     name: 'TANYAJAWAB',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1629398993/img-projects/QWQ_rjvg2c.png',
@@ -195,7 +195,7 @@ const projects: Project[] = [
     key_points: ['MERN', 'Next JS', 'Tailwind', 'Typescript'],
   },
   {
-    id: 6,
+    id: 9,
     name: 'Shopping Cart',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1628272045/img-projects/shopping_tjksvo.png',
@@ -208,7 +208,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 19,
+    id: 10,
     name: 'MGpedia - Final Project',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1633332200/img-projects/mg-pedia_muz4n2.png',
@@ -221,7 +221,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: 11,
     name: 'Covid19 Tracker',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1609568968/img-projects/c19track_l8bxh5.png',
@@ -234,7 +234,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 8,
+    id: 12,
     name: 'Movie App',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1609590217/img-projects/movie%20app/ma2_wmhiyi.png',
@@ -246,7 +246,7 @@ const projects: Project[] = [
     key_points: ['React'],
   },
   {
-    id: 9,
+    id: 13,
     name: 'Recipe App',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1617728871/img-projects/recipe_rokvds.png',
@@ -257,7 +257,7 @@ const projects: Project[] = [
     key_points: ['React'],
   },
   {
-    id: 10,
+    id: 14,
     name: 'Nextjs google clone',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1618228516/img-projects/next-google_gho7h1.png',
@@ -268,7 +268,7 @@ const projects: Project[] = [
     key_points: ['Next JS', 'Tailwind'],
   },
   {
-    id: 11,
+    id: 15,
     name: 'Movies app Next Js',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1619567782/img-projects/movies_fl4j47.png',
@@ -279,7 +279,7 @@ const projects: Project[] = [
     key_points: ['Next JS', 'Tailwind'],
   },
   {
-    id: 12,
+    id: 16,
     name: 'Landing page StayCation',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1617695725/img-projects/staycation_fosuvz.png',
@@ -290,7 +290,7 @@ const projects: Project[] = [
     key_points: ['HTML', 'CSS', 'SASS', 'AOS'],
   },
   {
-    id: 13,
+    id: 17,
     name: 'Landing page Food Recipes',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1617710435/img-projects/food_ynwucd.png',
@@ -301,7 +301,7 @@ const projects: Project[] = [
     key_points: ['HTML', 'CSS', 'Bootstrap', 'AOS'],
   },
   {
-    id: 17,
+    id: 18,
     name: 'Landing page Furniture Shop',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1629566506/img-projects/furniture-img_xya7ed.png',
@@ -312,7 +312,7 @@ const projects: Project[] = [
     key_points: ['HTML', 'CSS', 'JS', 'AOS'],
   },
   {
-    id: 18,
+    id: 19,
     name: 'Go-Travel',
     image_path: '/go-travel.PNG',
     deployed_url: 'https://angry-nightingale-2dc060.netlify.app/',
@@ -322,7 +322,7 @@ const projects: Project[] = [
     key_points: ['HTML', 'CSS', 'JS'],
   },
   {
-    id: 14,
+    id: 20,
     name: 'Navbar Responsive',
     image_path:
       'https://res.cloudinary.com/rangdra/image/upload/v1617709932/img-projects/navbar_ldtgeh.png',
