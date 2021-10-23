@@ -62,11 +62,11 @@ const frontendSkills: Skill[] = [
     name: 'Ant Design',
     level: '100%',
   },
-  {
-    Icon: SiSass,
-    name: 'SASS',
-    level: '100%',
-  },
+//   {
+//     Icon: SiSass,
+//     name: 'SASS',
+//     level: '100%',
+//   },
 ];
 
 const backendSkills: Skill[] = [
