@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <>
       <Image
-        src="/profile.jpg"
+        src="/me.jpg"
         width={128}
         height={128}
         alt="avatar"
@@ -25,7 +25,7 @@ const Sidebar = () => {
         Web Developer
       </p>
       <a
-        href="/assets/RangdraPangestu_Front End Web_Resume.pdf"
+        href="/assets/RangdraPangestu_Web Developer_Resume.pdf"
         download
         className="flex items-center justify-center px-2 py-1 my-2 transition duration-200 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:hover:bg-gray-500 hover:bg-cyan-500 hover:text-white"
       >
