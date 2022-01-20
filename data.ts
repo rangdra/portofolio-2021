@@ -62,11 +62,11 @@ const frontendSkills: Skill[] = [
     name: 'Ant Design',
     level: '100%',
   },
-//   {
-//     Icon: SiSass,
-//     name: 'SASS',
-//     level: '100%',
-//   },
+  //   {
+  //     Icon: SiSass,
+  //     name: 'SASS',
+  //     level: '100%',
+  //   },
 ];
 
 const backendSkills: Skill[] = [
@@ -129,24 +129,24 @@ const projects: Project[] = [
     description: 'Mencari events-events terbaru.',
     key_points: ['Next JS', 'Strapi', 'Typescript', 'Tailwind'],
   },
-  {
-    id: 5,
-    name: 'Social App',
-    image_path:
-      'https://res.cloudinary.com/rangdra/image/upload/v1617125498/img-projects/socialapp2_een01b.png',
-    deployed_url: 'https://rpsocialapp.netlify.app/',
-    github_url: 'https://github.com/rangdra/merng-client-socialapp',
-    category: ['react', 'mern'],
-    description: 'MERN Graphql & Semantic UI',
-    key_points: [
-      'Mongo DB',
-      'React',
-      'Express',
-      'Node',
-      'Graphql',
-      'Semantic UI',
-    ],
-  },
+  // {
+  //   id: 5,
+  //   name: 'Social App',
+  //   image_path:
+  //     'https://res.cloudinary.com/rangdra/image/upload/v1617125498/img-projects/socialapp2_een01b.png',
+  //   deployed_url: 'https://rpsocialapp.netlify.app/',
+  //   github_url: 'https://github.com/rangdra/merng-client-socialapp',
+  //   category: ['react', 'mern'],
+  //   description: 'MERN Graphql & Semantic UI',
+  //   key_points: [
+  //     'Mongo DB',
+  //     'React',
+  //     'Express',
+  //     'Node',
+  //     'Graphql',
+  //     'Semantic UI',
+  //   ],
+  // },
 
   // {
   //     id: 5,
@@ -170,17 +170,28 @@ const projects: Project[] = [
     description: 'Realtime Chat App, Socket IO, Ant Design',
     key_points: ['React', 'Socket IO', 'Ant design'],
   },
+  // {
+  //   id: 7,
+  //   name: 'Social App V2',
+  //   image_path:
+  //     'https://res.cloudinary.com/rangdra/image/upload/v1627389119/social_app/social_wynsvo.png',
+  //   deployed_url: 'https://rp-socialapp.vercel.app/',
+  //   github_url: 'https://github.com/rangdra/socialapp-v2',
+  //   category: ['mern', 'nextjs'],
+  //   description:
+  //     'CRUD Post, like-unlike, CRD comment, Authentication, Edit Profile, Styling with Tailwind',
+  //   key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
+  // },
   {
-    id: 7,
-    name: 'Social App V2',
+    id: 22,
+    name: 'Posts App',
     image_path:
-      'https://res.cloudinary.com/rangdra/image/upload/v1627389119/social_app/social_wynsvo.png',
-    deployed_url: 'https://rp-socialapp.vercel.app/',
-    github_url: 'https://github.com/rangdra/socialapp-v2',
-    category: ['mern', 'nextjs'],
-    description:
-      'CRUD Post, like-unlike, CRD comment, Authentication, Edit Profile, Styling with Tailwind',
-    key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
+      'https://res.cloudinary.com/rangdradev/image/upload/v1642608321/mern-posts/mern-posts_xr5mqf.png',
+    deployed_url: 'https://rp-posts.netlify.app/',
+    github_url: 'https://github.com/rangdra/mern-posts-client',
+    category: ['mern'],
+    description: 'CRUD Post, Authentication, Styling with Tailwind',
+    key_points: ['Mongo DB', 'Express', 'React', 'Node', 'Tailwind'],
   },
   {
     id: 8,

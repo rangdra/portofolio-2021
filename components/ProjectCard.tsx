@@ -1,10 +1,10 @@
-import { FunctionComponent, useState } from "react";
-import Image from "next/image";
-import { AiFillGithub, AiFillProject } from "react-icons/ai";
-import { MdClose } from "react-icons/md";
-import { Project } from "../types";
-import { motion } from "framer-motion";
-import { stagger, fadeInUp } from "../animations";
+import { FunctionComponent, useState } from 'react';
+import Image from 'next/image';
+import { AiFillGithub, AiFillProject } from 'react-icons/ai';
+import { MdClose } from 'react-icons/md';
+import { Project } from '../types';
+import { motion } from 'framer-motion';
+import { stagger, fadeInUp } from '../animations';
 
 const ProjectCard: FunctionComponent<{
   project: Project;
@@ -29,7 +29,7 @@ const ProjectCard: FunctionComponent<{
       <Image
         src={image_path}
         alt={name}
-        className="cursor-pointer"
+        className="object-cover object-center cursor-pointer"
         onClick={() => setShowDetail(id)}
         width={300}
         height={150}
@@ -63,7 +63,7 @@ const ProjectCard: FunctionComponent<{
                 className="flex items-center px-4 py-2 space-x-3 bg-gray-200 dark:bg-dark-200"
               >
                 <AiFillGithub /> <span>Github</span>
-              </a>{" "}
+              </a>{' '}
               <a
                 href={deployed_url}
                 target="_blank"

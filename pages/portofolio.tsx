@@ -46,9 +46,10 @@ const Portofolio = () => {
         initial="initial"
         animate="animate"
       >
-        {projects.map((project) => (
+        {projects.map((project, idx) => (
           <motion.div
             variants={fadeInUp}
+            key={idx}
             className="col-span-12 p-2 bg-gray-200 rounded-lg sm:col-span-6 lg:col-span-4 dark:bg-dark-200"
           >
             <ProjectCard
