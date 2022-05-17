@@ -129,6 +129,18 @@ const projects: Project[] = [
     description: 'Mencari events-events terbaru.',
     key_points: ['Next JS', 'Strapi', 'Typescript', 'Tailwind'],
   },
+  {
+    id: 5,
+    name: 'LuxSpace.',
+    image_path:
+      'https://res.cloudinary.com/rangdradev/image/upload/v1652792564/luxspace_a7wkfg.png',
+    deployed_url: 'https://rp-luxspace.netlify.app/',
+    github_url: '#',
+    category: ['react'],
+    description:
+      'LuxSpace merupakan hasil belajar dari course Master Class: React JS dan Tailwind CSS Website Development BuildWithAngga',
+    key_points: ['React', 'Tailwind', 'Custom Hooks', 'Responsive Design'],
+  },
   // {
   //   id: 5,
   //   name: 'Social App',
@@ -194,7 +206,7 @@ const projects: Project[] = [
   //   key_points: ['Mongo DB', 'Next JS', 'Express', 'Node', 'Tailwind'],
   // },
   {
-    id: 22,
+    id: 7,
     name: 'Posts App',
     image_path:
       'https://res.cloudinary.com/rangdradev/image/upload/v1642608321/mern-posts/mern-posts_xr5mqf.png',
