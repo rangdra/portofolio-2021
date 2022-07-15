@@ -207,13 +207,13 @@ const projects: Project[] = [
   // },
   {
     id: 7,
-    name: 'Posts App',
+    name: 'rapebook',
     image_path:
-      'https://res.cloudinary.com/rangdradev/image/upload/v1642608321/mern-posts/mern-posts_xr5mqf.png',
-    deployed_url: 'https://rp-posts.netlify.app/',
-    github_url: 'https://github.com/rangdra/mern-posts-client',
+      'https://res.cloudinary.com/rangdradev/image/upload/v1657899837/rapebook_dwlz3b.png',
+    deployed_url: 'https://rapebook.netlify.app/',
+    github_url: 'https://github.com/rangdra/rapebook-client',
     category: ['mern'],
-    description: 'CRUD Post, Authentication, Styling with Tailwind',
+    description: 'Sosial media apps yang masih perlu banyak perbaikan',
     key_points: ['Mongo DB', 'Express', 'React', 'Node', 'Tailwind'],
   },
   {
