@@ -6,6 +6,7 @@ export interface Skill {
 }
 
 export type Category =
+  | 'vanilla js'
   | 'react'
   | 'nextjs'
   | 'landing page'

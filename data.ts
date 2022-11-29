@@ -366,6 +366,28 @@ const projects: Project[] = [
     description: 'Navbar Responsive',
     key_points: ['HTML', 'CSS', 'JS'],
   },
+  {
+    id: 21,
+    name: 'Quiz App',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1669577436/img-projects/quiz_hje2dt.png',
+    deployed_url: 'https://rangdra.github.io/quiz_app-js/',
+    github_url: 'https://github.com/rangdra/quiz_app-js',
+    category: ['vanilla js'],
+    description: 'Quiz App with Vanilla JS',
+    key_points: ['HTML', 'CSS', 'JS'],
+  },
+  {
+    id: 22,
+    name: 'Slider Image',
+    image_path:
+      'https://res.cloudinary.com/rangdra/image/upload/v1669577442/img-projects/slider_ukgtwg.png',
+    deployed_url: 'https://rangdra.github.io/slider-js/',
+    github_url: 'https://github.com/rangdra/slider-js',
+    category: ['vanilla js'],
+    description: 'Slider image with Vanilla JS',
+    key_points: ['HTML', 'CSS', 'JS'],
+  },
 ];
 
 export { services, projects, frontendSkills, backendSkills };
