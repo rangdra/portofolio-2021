@@ -1,26 +1,28 @@
 {
-	"name": "portofolio-2021",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start"
-	},
-	"dependencies": {
-		"framer-motion": "3.10.3",
-		"next": "10.2.2",
-		"next-themes": "^0.0.14",
-		"react": "17.0.2",
-		"react-dom": "17.0.2",
-		"react-icons": "^4.12.0",
-		"uuid": "^9.0.1"
-	},
-	"devDependencies": {
-		"@types/react": "^17.0.8",
-		"autoprefixer": "^10.2.5",
-		"postcss": "^8.3.0",
-		"tailwindcss": "^2.1.2",
-		"typescript": "^4.3.2"
-	}
+  "name": "portofolio-2021",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "next-sitemap"
+  },
+  "dependencies": {
+    "framer-motion": "3.10.3",
+    "next": "10.2.2",
+    "next-sitemap": "^4.2.3",
+    "next-themes": "^0.0.14",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.12.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.8",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.1.2",
+    "typescript": "^4.3.2"
+  }
 }

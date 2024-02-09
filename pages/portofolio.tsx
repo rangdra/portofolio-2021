@@ -6,8 +6,13 @@ import { projects as projectsData } from '../data';
 import { Category } from '../types';
 import { stagger, fadeInUp, routeAnimations } from '../animations';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const Portofolio = () => {
+  const router = useRouter();
+  const siteUrl = 'https://rangdrap.vercel.app';
+  const currentUrl = `${siteUrl}${router.asPath}`;
+
   const [projects, setProjects] = useState(projectsData);
   const [active, setActive] = useState('projects');
   const [showDetail, setShowDetail] = useState<number | null>(null);
@@ -35,6 +40,14 @@ const Portofolio = () => {
     >
       <Head>
         <title>Portofolio | Rangdra Pangestu</title>
+        <meta name="description" content="My list portofolio projects" />
+        <meta property="og:title" content="Portofolio | Rangdra Pangestu" />
+        <meta name="og:description" content="My list portofolio projects" />
+        <link rel="canonical" href={currentUrl} />
+
+        <meta property="og:url" content={currentUrl} />
+
+        <meta name="robots" content="noindex, follow" />
       </Head>
       <ProjectsNavbar
         handleFilterCategory={handleFilterCategory}

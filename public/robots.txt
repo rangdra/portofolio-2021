@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rangdrap.vercel.app
+
+# Sitemaps
+Sitemap: https://rangdrap.vercel.app/sitemap.xml
