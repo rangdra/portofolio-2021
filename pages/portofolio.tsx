@@ -9,11 +9,11 @@ import Head from 'next/head';
 
 const Portofolio = () => {
   const [projects, setProjects] = useState(projectsData);
-  const [active, setActive] = useState('all');
+  const [active, setActive] = useState('projects');
   const [showDetail, setShowDetail] = useState<number | null>(null);
 
-  const handleFilterCategory = (category: Category | 'all') => {
-    if (category === 'all') {
+  const handleFilterCategory = (category: Category | 'projects') => {
+    if (category === 'projects') {
       setProjects(projectsData);
       setActive(category);
       return;
@@ -40,6 +40,7 @@ const Portofolio = () => {
         handleFilterCategory={handleFilterCategory}
         active={active}
       />
+      <div id="top-content"></div>
       <motion.div
         className="relative grid grid-cols-12 gap-4 my-3"
         variants={stagger}

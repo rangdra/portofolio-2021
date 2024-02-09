@@ -24,13 +24,26 @@ const ProjectCard: FunctionComponent<{
   showDetail,
   setShowDetail,
 }) => {
+  const isBrowser = () => typeof window !== 'undefined';
+
+  function scrollToTop() {
+    if (!isBrowser()) return;
+    const elem = document.getElementById('top-content');
+    elem?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <div>
       <Image
         src={image_path}
         alt={name}
         className="object-cover object-center cursor-pointer"
-        onClick={() => setShowDetail(id)}
+        onClick={() => {
+          setShowDetail(id);
+          scrollToTop();
+        }}
         width={300}
         height={150}
         layout="responsive"
@@ -49,6 +62,7 @@ const ProjectCard: FunctionComponent<{
                 width={300}
                 height={150}
                 layout="responsive"
+                objectFit="cover"
               />
             </motion.div>
 
@@ -56,22 +70,27 @@ const ProjectCard: FunctionComponent<{
               variants={fadeInUp}
               className="flex justify-center my-4 space-x-3"
             >
-              <a
-                href={github_url}
-                target="_blank"
-                rel="noopener noreffer"
-                className="flex items-center px-4 py-2 space-x-3 bg-gray-200 dark:bg-dark-200"
-              >
-                <AiFillGithub /> <span>Github</span>
-              </a>{' '}
-              <a
-                href={deployed_url}
-                target="_blank"
-                rel="noopener noreffer"
-                className="flex items-center px-4 py-2 space-x-3 bg-gray-200 dark:bg-dark-200"
-              >
-                <AiFillProject /> <span>Project</span>
-              </a>
+              {github_url && (
+                <a
+                  href={github_url}
+                  target="_blank"
+                  rel="noopener noreffer"
+                  className="flex items-center px-4 py-2 space-x-3 bg-gray-200 dark:bg-dark-200"
+                >
+                  <AiFillGithub /> <span>Github</span>
+                </a>
+              )}
+
+              {deployed_url && (
+                <a
+                  href={deployed_url}
+                  target="_blank"
+                  rel="noopener noreffer"
+                  className="flex items-center px-4 py-2 space-x-3 bg-gray-200 dark:bg-dark-200"
+                >
+                  <AiFillProject /> <span>Project</span>
+                </a>
+              )}
             </motion.div>
           </motion.div>
 
@@ -85,13 +104,22 @@ const ProjectCard: FunctionComponent<{
             <motion.h3 variants={fadeInUp} className="mb-3 font-medium">
               {description}
             </motion.h3>
+            <motion.h3 variants={fadeInUp} className="font-bold">
+              Techinal Stack:{' '}
+              {key_points.map((tech, idx) => (
+                <span className="text-sm italic font-normal" key={tech}>
+                  {tech}
+                  {key_points.length - 1 === idx ? '' : ', '}
+                </span>
+              ))}
+            </motion.h3>
             <motion.div
               variants={fadeInUp}
-              className="flex flex-wrap mt-5 space-x-2 text-sm tracking-wider"
+              className="flex flex-wrap mt-3 space-x-2 text-sm tracking-wider"
             >
-              {key_points.map((tech) => (
+              {category.map((tech) => (
                 <span
-                  className="px-2 py-1 my-1 bg-gray-200 rounded-sm dark:bg-dark-200"
+                  className="px-2 py-1 my-1 uppercase bg-gray-200 rounded-sm dark:bg-dark-200"
                   key={tech}
                 >
                   {tech}
