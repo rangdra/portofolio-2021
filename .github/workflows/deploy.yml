@@ -14,27 +14,57 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: SSH and Deploy to Server
-        uses: appleboy/ssh-action@master
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+  
+      - name: Build the React app
+        run: npm run build
+
+      - name: Upload to server via SCP
+        uses: appleboy/scp-action@v0.1.4
+         with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          source: "build/*"
+          target: "/var/www/html/portofolio"
+
+      - name: Run remote SSH commands
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            # Install Node.js v16 if not installed
-            if ! command -v node > /dev/null; then
-              curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-              sudo apt-get install -y nodejs
-            fi
+            echo "Restarting web server..."
+            sudo systemctl reload nginx
+            echo "Deployment complete!"
+        # with:
+        #   host: ${{ secrets.HOST }}
+        #   username: ${{ secrets.USERNAME }}
+        #   key: ${{ secrets.PRIVATE_KEY }}
+        #   port: 22
+        #   script: |
+        #     # Install Node.js v16 if not installed
+        #     if ! command -v node > /dev/null; then
+        #       curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+        #       sudo apt-get install -y nodejs
+        #     fi
       
-            # Install PM2 globally if not installed
-            if ! command -v pm2 > /dev/null; then
-              sudo npm install -g pm2
-            fi
-            cd portofolio-2021
-            git pull origin master
-            git status
-            npm install --only=prod
-            npm run build
-            pm2 describe portofolio > /dev/null && pm2 restart portofolio || pm2 start --name portofolio npm -- start
+        #     # Install PM2 globally if not installed
+        #     if ! command -v pm2 > /dev/null; then
+        #       sudo npm install -g pm2
+        #     fi
+        #     cd portofolio-2021
+        #     git pull origin master
+        #     git status
+        #     npm install --only=prod
+        #     npm run build
+        #     pm2 describe portofolio > /dev/null && pm2 restart portofolio || pm2 start --name portofolio npm -- start
