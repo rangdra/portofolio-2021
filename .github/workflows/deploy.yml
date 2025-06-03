@@ -27,7 +27,7 @@ jobs:
 
       - name: Upload to server via SCP
         uses: appleboy/scp-action@v0.1.4
-         with:
+        with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY }}
