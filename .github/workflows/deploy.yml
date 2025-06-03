@@ -34,6 +34,7 @@ jobs:
             fi
             cd portofolio-2021
             git pull origin master
-            npm install --only=prod
             git status
+            npm install --only=prod
+            npm run build
             pm2 describe portofolio > /dev/null && pm2 restart portofolio || pm2 start --name portofolio npm -- start
