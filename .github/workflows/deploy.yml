@@ -14,13 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Upload to server via SCP
+      - name: SSH and Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          # key: ${{ secrets.PRIVATE_KEY }}
-          password: ${{ secrets.PASSWORD }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
             if ! command -v node > /dev/null; then
