@@ -6,6 +6,9 @@ name: Deploy Portofolio
 on:
   push:
     branches: [master]
+  repository_dispatch:
+    types: [deploy-trigger]
+  workflow_dispatch:
 
 jobs:
   build:
