@@ -22,6 +22,16 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 22
           script: |
+            # Install Node.js v16 if not installed
+            if ! command -v node > /dev/null; then
+              curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+      
+            # Install PM2 globally if not installed
+            if ! command -v pm2 > /dev/null; then
+              sudo npm install -g pm2
+            fi
             cd portofolio-2021
             git pull origin master
             npm install --only=prod
