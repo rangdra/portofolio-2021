@@ -22,19 +22,8 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            if ! command -v node > /dev/null; then
-              curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-              sudo apt-get install -y nodejs
-            fi
-            if ! command -v yarn > /dev/null; then
-              sudo npm install -g yarn
-            fi
-            if ! command -v pm2 > /dev/null; then
-              yarn add global pm2
-            fi
             cd portofolio-2021
             git pull origin master
             git status
             yarn install
-            yarn build
-            pm2 describe portofolio > /dev/null && pm2 restart portofolio || pm2 start --name portofolio npm -- start
+            docker compose up --build -d

@@ -1,0 +1,24 @@
+# Folder yang dibangun secara lokal
+.next
+out
+node_modules
+
+# File konfigurasi dan cache yang tidak dibutuhkan dalam container
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+*.tsbuildinfo
+
+# Git & Editor
+.git
+.gitignore
+.vscode
+.idea
+
+# Docker & CI/CD config
+Dockerfile
+docker-compose.yml
+
+# Sistem operasi
+.DS_Store
+Thumbs.db

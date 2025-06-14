@@ -1,0 +1,10 @@
+services:
+  portofolio:
+    build: .
+    image: portofolio:1.0.0
+    container_name: portofolio
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
