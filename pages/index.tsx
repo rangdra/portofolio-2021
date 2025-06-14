@@ -19,7 +19,7 @@ const Home = () => {
       exit="exit"
     >
       <Head>
-        <title>About | Rangdra P</title>
+        <title>About | Test</title>
         <meta
           name="description"
           content="A Software Engineer focusing on web and mobile application development.
