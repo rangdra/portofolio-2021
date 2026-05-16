@@ -26,4 +26,4 @@ jobs:
             git pull origin master
             git status
             yarn install
-            docker compose up --build -d
+            sudo docker compose up --build -d
