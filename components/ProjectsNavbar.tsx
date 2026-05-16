@@ -1,36 +1,36 @@
-import { FunctionComponent } from 'react';
-import { Category } from '../types';
+import { FunctionComponent } from "react";
+import { Category } from "../types";
 
-export const NavItem: FunctionComponent<{
-  value: Category | 'projects';
-  handleFilterCategory: Function;
-  active: string;
-}> = ({ value, handleFilterCategory, active }) => {
-  return (
-    <li
-      className={`${
-        active === value && 'text-cyan-500 '
-      } capitalize cursor-pointer hover:text-cyan-500 font-medium hover:underline transition duration-200`}
-      onClick={() => handleFilterCategory(value)}
-    >
-      {value}
-    </li>
-  );
-};
+const allFilters: (Category | "projects")[] = [
+  "projects",
+  "WEB",
+  "CMS",
+  "API",
+  "APP",
+];
 
 const ProjectsNavbar: FunctionComponent<{
-  handleFilterCategory: Function;
+  handleFilterCategory: (category: Category | "projects") => void;
   active: string;
-}> = (props) => {
+}> = ({ handleFilterCategory, active }) => {
   return (
-    <div className="flex px-3 py-2 space-x-3 overflow-x-auto list-none">
-      <NavItem value="projects" {...props} />
-      {/* <NavItem value="vanilla js" {...props} />
-      <NavItem value="react" {...props} />
-      <NavItem value="nextjs" {...props} />
-      <NavItem value="mern" {...props} />
-      <NavItem value="typescript" {...props} /> */}
-    </div>
+    <nav aria-label="Project filters" className="flex flex-wrap gap-xs mb-lg">
+      {allFilters.map((value) => (
+        <button
+          key={value}
+          onClick={() => handleFilterCategory(value)}
+          className={`inline-flex items-center rounded-full text-body-sm font-medium transition duration-180 ${
+            active === value
+              ? "bg-ink text-on-dark border border-ink"
+              : "bg-transparent text-steel border border-hairline hover:border-hairline-strong hover:text-ink"
+          }`}
+          style={{ padding: "8px 16px" }}
+          aria-pressed={active === value}
+        >
+          {value === "projects" ? "All" : value}
+        </button>
+      ))}
+    </nav>
   );
 };
 

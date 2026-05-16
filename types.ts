@@ -1,25 +1,28 @@
+import { ComponentType } from "react";
+import { IconType } from "react-icons";
+
 export interface Skill {
-  Icon: any;
+  Icon: IconType | ComponentType<any>;
   name: string;
   level: string;
   bgColor?: string;
 }
 
-export type Category = 'WEB' | 'CMS' | 'API' | 'APP';
+export type Category = "WEB" | "CMS" | "API" | "APP";
 
 export interface Project {
-  id: number;
+  id: string | number;
   name: string;
   image_path: any;
-  deployed_url: string;
-  github_url: string;
+  deployed_url: string | null;
+  github_url: string | null;
   category: Category[];
   description: string;
   key_points: string[];
 }
 
 export interface Service {
-  Icon: any; //TODO fix any
+  Icon: IconType | ComponentType<any>;
   title: string;
   about: string;
 }
