@@ -30,7 +30,7 @@ const ProjectCard: FunctionComponent<{
       {/* ─── Card ─── */}
       <motion.div
         variants={fadeInUp}
-        className="group relative cursor-pointer flex flex-col h-full rounded-lg overflow-hidden bg-canvas border border-hairline transition-all duration-300 hover:shadow-elev-3 hover:border-brand-green/40 hover:-translate-y-1"
+        className="relative flex flex-col h-full overflow-hidden transition-all duration-300 border rounded-lg cursor-pointer group bg-canvas border-hairline hover:shadow-elev-3 hover:border-brand-green/40 hover:-translate-y-1"
         onClick={() => setShowDetail(id)}
         role="button"
         tabIndex={0}
@@ -55,34 +55,21 @@ const ProjectCard: FunctionComponent<{
             className="transition-transform duration-500 group-hover:scale-110"
           />
           {/* Gradient overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-teal-deep/80 via-brand-teal-deep/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-brand-teal-deep/80 via-brand-teal-deep/20 to-transparent group-hover:opacity-100" />
 
           {/* Floating action hint */}
           <div className="absolute bottom-3 right-3 flex items-center gap-1 px-3 py-1.5 rounded-full bg-brand-green text-on-primary text-button-md font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-glow-green">
             <span>View</span>
             <HiArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
           </div>
-
-          {/* Category badges floating top-left */}
-          <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-            {category.map((cat) => (
-              <span
-                key={cat}
-                className="inline-flex items-center px-2 py-0.5 rounded-full bg-brand-teal-deep/90 text-brand-green text-micro-uppercase font-semibold backdrop-blur-sm"
-                style={{ fontSize: "10px", letterSpacing: "0.8px" }}
-              >
-                {cat}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Content */}
         <div className="flex flex-col flex-1 p-xl">
-          <h3 className="text-heading-5 font-semibold text-ink mb-xs group-hover:text-brand-green-dark transition-colors duration-200">
+          <h3 className="font-semibold transition-colors duration-200 text-heading-5 text-ink mb-xs group-hover:text-brand-green-dark">
             {name}
           </h3>
-          <p className="text-body-sm text-slate line-clamp-2 flex-1 mb-md">
+          <p className="flex-1 text-body-sm text-slate line-clamp-2 mb-md">
             {description}
           </p>
 
@@ -135,7 +122,7 @@ const ProjectCard: FunctionComponent<{
             {/* Close button */}
             <button
               onClick={() => setShowDetail(null)}
-              className="absolute top-4 right-4 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-brand-teal-deep/80 text-on-dark hover:bg-brand-teal-deep transition backdrop-blur-sm"
+              className="absolute z-10 flex items-center justify-center transition rounded-full top-4 right-4 w-9 h-9 bg-brand-teal-deep/80 text-on-dark hover:bg-brand-teal-deep backdrop-blur-sm"
               aria-label="Close"
             >
               <MdClose className="w-5 h-5" />
@@ -143,7 +130,7 @@ const ProjectCard: FunctionComponent<{
 
             {/* Modal image hero */}
             <div
-              className="relative w-full bg-brand-teal-deep flex-shrink-0"
+              className="relative flex-shrink-0 w-full bg-brand-teal-deep"
               style={{ paddingBottom: "45%" }}
             >
               <Image
@@ -156,7 +143,7 @@ const ProjectCard: FunctionComponent<{
             </div>
 
             {/* Modal content */}
-            <div className="flex-1 overflow-y-auto p-xxl -mt-12 relative">
+            <div className="relative flex-1 -mt-12 overflow-y-auto p-xxl">
               {/* Category badges */}
               <div className="flex flex-wrap gap-xs mb-md">
                 {category.map((cat) => (
@@ -166,10 +153,10 @@ const ProjectCard: FunctionComponent<{
                 ))}
               </div>
 
-              <h2 className="text-heading-2 font-medium text-ink mb-sm">
+              <h2 className="font-medium text-heading-2 text-ink mb-sm">
                 {name}
               </h2>
-              <p className="text-subtitle text-slate mb-xl leading-relaxed">
+              <p className="leading-relaxed text-subtitle text-slate mb-xl">
                 {description}
               </p>
 
@@ -180,7 +167,7 @@ const ProjectCard: FunctionComponent<{
                   {key_points.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex items-center px-sm py-xs rounded-lg bg-surface text-body-sm font-medium text-ink border border-hairline hover:border-brand-green-soft hover:bg-surface-feature transition-colors"
+                      className="inline-flex items-center font-medium transition-colors border rounded-lg px-sm py-xs bg-surface text-body-sm text-ink border-hairline hover:border-brand-green-soft hover:bg-surface-feature"
                     >
                       {tech}
                     </span>
@@ -189,7 +176,7 @@ const ProjectCard: FunctionComponent<{
               </div>
 
               {/* Actions */}
-              <div className="flex flex-wrap items-center gap-sm pt-lg border-t border-hairline">
+              <div className="flex flex-wrap items-center border-t gap-sm pt-lg border-hairline">
                 {deployed_url && (
                   <a
                     href={deployed_url}

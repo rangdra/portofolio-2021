@@ -1,14 +1,16 @@
-import Link from "next/link";
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 import { HiOutlineMail } from "react-icons/hi";
 
 const sections = [
   {
-    heading: "Site",
+    heading: "Navigation",
     links: [
-      { label: "About", href: "/" },
-      { label: "Resume", href: "/resume" },
-      { label: "Work", href: "/portofolio" },
+      { label: "About", href: "#about" },
+      { label: "Services", href: "#services" },
+      { label: "Experience", href: "#experience" },
+      { label: "Work", href: "#work" },
+      { label: "Skills", href: "#skills" },
+      { label: "Contact", href: "#contact" },
     ],
   },
   {
@@ -33,24 +35,25 @@ const sections = [
     ],
   },
   {
-    heading: "Stack",
+    heading: "Core Stack",
     links: [
-      { label: "TypeScript", href: "#" },
-      { label: "React · Next.js", href: "#" },
-      { label: "React Native", href: "#" },
-      { label: "Node.js · NestJS", href: "#" },
+      { label: "TypeScript", href: "#skills" },
+      { label: "React · Next.js", href: "#skills" },
+      { label: "React Native", href: "#skills" },
+      { label: "Node.js · NestJS", href: "#skills" },
+      { label: "PostgreSQL · MongoDB", href: "#skills" },
     ],
   },
 ];
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-teal-deep text-on-dark mt-section-lg">
+    <footer id="contact" className="bg-brand-teal-deep text-on-dark mt-section-lg">
       <div className="container-app py-section">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-xl">
           {/* Brand */}
           <div className="md:col-span-5">
-            <p className="eyebrow-on-dark">Software engineer</p>
+            <p className="eyebrow-on-dark">Software Engineer</p>
             <h3 className="mt-sm text-heading-3 font-medium tracking-tight text-balance">
               Let's build something{" "}
               <span className="text-brand-green">durable</span>.
@@ -82,28 +85,18 @@ const Footer = () => {
                   {section.heading}
                 </h4>
                 <ul className="space-y-xxs" role="list">
-                  {section.links.map((link) =>
-                    "external" in link && link.external ? (
-                      <li key={link.label}>
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-on-dark-muted text-body-sm hover:text-on-dark transition"
-                        >
-                          {link.label}
-                        </a>
-                      </li>
-                    ) : (
-                      <li key={link.label}>
-                        <Link href={link.href}>
-                          <a className="text-on-dark-muted text-body-sm hover:text-on-dark transition">
-                            {link.label}
-                          </a>
-                        </Link>
-                      </li>
-                    ),
-                  )}
+                  {section.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                        className="text-on-dark-muted text-body-sm hover:text-on-dark transition"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}

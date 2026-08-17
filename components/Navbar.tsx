@@ -1,45 +1,61 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { HiMenu, HiX } from "react-icons/hi";
 
-type NavItem = { name: string; route: string };
+type NavItem = { name: string; href: string };
 
 const navItems: NavItem[] = [
-  { name: "About", route: "/" },
-  { name: "Resume", route: "/resume" },
-  { name: "Work", route: "/portofolio" },
+  { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Experience", href: "#experience" },
+  { name: "Work", href: "#work" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const Logo = () => (
-  <Link href="/">
-    <a
-      className="flex items-center gap-2 group focus:outline-none"
-      aria-label="Rangdra Pangestu — Home"
+  <a
+    href="#about"
+    className="flex items-center gap-2 group focus:outline-none"
+    aria-label="Rangdra Pangestu — Home"
+  >
+    <span
+      aria-hidden="true"
+      className="flex items-center justify-center h-8 w-8 rounded-lg bg-brand-teal-deep text-brand-green font-bold text-body-md transition group-hover:bg-brand-teal"
     >
-      <span
-        aria-hidden="true"
-        className="flex items-center justify-center h-8 w-8 rounded-lg bg-brand-teal-deep text-brand-green font-bold text-body-md transition group-hover:bg-brand-teal"
-      >
-        RP
-      </span>
-      <span className="font-semibold text-ink text-body-md tracking-tight">
-        Rangdra<span className="text-brand-green-dark">.</span>
-      </span>
-    </a>
-  </Link>
+      RP
+    </span>
+    <span className="font-semibold text-ink text-body-md tracking-tight">
+      Rangdra<span className="text-brand-green-dark">.</span>
+    </span>
+  </a>
 );
 
 const Navbar = () => {
-  const { pathname } = useRouter();
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+    const handleScroll = () => {
+      const sections = ["about", "services", "experience", "work", "skills", "contact"];
+      const scrollPosition = window.scrollY + 100;
 
-  const isActive = (route: string) =>
-    route === "/" ? pathname === "/" : pathname.startsWith(route);
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 bg-canvas/90 backdrop-blur supports-[backdrop-filter]:bg-canvas/75 border-b border-hairline">
@@ -50,29 +66,31 @@ const Navbar = () => {
         <Logo />
 
         {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-xl" role="list">
-          {navItems.map((item) => (
-            <li key={item.route}>
-              <Link href={item.route}>
+        <ul className="hidden lg:flex items-center gap-lg" role="list">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href.substring(1);
+            return (
+              <li key={item.href}>
                 <a
+                  href={item.href}
                   className={`relative inline-flex items-center text-body-sm font-medium transition duration-180 py-2 ${
-                    isActive(item.route)
-                      ? "text-brand-green-dark"
+                    isActive
+                      ? "text-brand-green-dark font-semibold"
                       : "text-slate hover:text-ink"
                   }`}
-                  aria-current={isActive(item.route) ? "page" : undefined}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   {item.name}
-                  {isActive(item.route) && (
+                  {isActive && (
                     <span
                       aria-hidden="true"
                       className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-brand-green-dark"
                     />
                   )}
                 </a>
-              </Link>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden lg:flex items-center gap-sm">
@@ -83,7 +101,7 @@ const Navbar = () => {
           >
             Download CV
           </a>
-          <a href="mailto:rangdra2@gmail.com" className="btn-primary">
+          <a href="#contact" className="btn-primary">
             Hire me
           </a>
         </div>
@@ -112,22 +130,24 @@ const Navbar = () => {
           className="lg:hidden border-t border-hairline bg-canvas"
         >
           <ul className="container-app flex flex-col py-md" role="list">
-            {navItems.map((item) => (
-              <li key={item.route}>
-                <Link href={item.route}>
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <li key={item.href}>
                   <a
+                    href={item.href}
+                    onClick={() => setOpen(false)}
                     className={`block px-sm py-sm rounded-md text-body-md font-medium ${
-                      isActive(item.route)
-                        ? "text-brand-green-dark bg-surface-feature"
+                      isActive
+                        ? "text-brand-green-dark bg-surface-feature font-semibold"
                         : "text-ink hover:bg-surface-soft"
                     }`}
-                    aria-current={isActive(item.route) ? "page" : undefined}
                   >
                     {item.name}
                   </a>
-                </Link>
-              </li>
-            ))}
+                </li>
+              );
+            })}
             <li className="flex flex-col gap-sm px-sm pt-md">
               <a
                 href="/assets/CV Rangdra Pangestu - Software Engineer.pdf"
@@ -137,7 +157,8 @@ const Navbar = () => {
                 Download CV
               </a>
               <a
-                href="mailto:rangdra2@gmail.com"
+                href="#contact"
+                onClick={() => setOpen(false)}
                 className="btn-primary w-full"
               >
                 Hire me
