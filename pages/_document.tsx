@@ -5,8 +5,14 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+          />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link
             rel="icon"
             type="image/png"
@@ -31,9 +37,9 @@ class MyDocument extends Document {
             href="/icon-16x16.png"
             sizes="16x16"
           />
-          <meta name="theme-color" content="#001e2b" />
+          <meta name="theme-color" content="#ffffff" />
         </Head>
-        <body className="bg-canvas text-ink antialiased">
+        <body>
           <Main />
           <NextScript />
         </body>

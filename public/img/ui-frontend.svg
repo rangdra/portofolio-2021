@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8c7bff"/>
+      <stop offset="1" stop-color="#ff8fb1"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="640" height="400" fill="#fff"/>
+
+  <!-- nav -->
+  <circle cx="38" cy="30" r="8" fill="#141414"/>
+  <rect x="52" y="26" width="54" height="8" rx="4" fill="#141414"/>
+  <rect x="236" y="18" width="168" height="24" rx="12" fill="#f2f2f0"/>
+  <rect x="252" y="27" width="30" height="6" rx="3" fill="#b5b5b0"/>
+  <rect x="295" y="27" width="34" height="6" rx="3" fill="#b5b5b0"/>
+  <rect x="342" y="27" width="46" height="6" rx="3" fill="#b5b5b0"/>
+  <rect x="534" y="18" width="78" height="24" rx="12" fill="#2a2421"/>
+  <rect x="548" y="27" width="34" height="6" rx="3" fill="#fff"/>
+  <circle cx="598" cy="30" r="7" fill="#4a403b"/>
+
+  <!-- hero copy -->
+  <rect x="28" y="78" width="74" height="18" rx="9" fill="#f2f2f0"/>
+  <circle cx="40" cy="87" r="3" fill="#2fa36b"/>
+  <rect x="48" y="84" width="46" height="6" rx="3" fill="#8a8a8a"/>
+  <text x="28" y="136" font-size="34" font-weight="700" letter-spacing="-1.2" fill="#141414">Ship products</text>
+  <text x="28" y="174" font-size="34" font-style="italic" font-family="Georgia, serif" fill="#141414">people love.</text>
+  <rect x="28" y="194" width="236" height="7" rx="3.5" fill="#d6d6d2"/>
+  <rect x="28" y="208" width="200" height="7" rx="3.5" fill="#d6d6d2"/>
+  <rect x="28" y="236" width="104" height="30" rx="15" fill="#141414"/>
+  <rect x="46" y="248" width="56" height="6" rx="3" fill="#fff"/>
+  <path d="M112 247l5 4-5 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="140" y="236" width="88" height="30" rx="15" fill="#fff" stroke="#d9d9d6"/>
+  <rect x="158" y="248" width="52" height="6" rx="3" fill="#555"/>
+
+  <!-- hero visual -->
+  <rect x="330" y="70" width="282" height="200" rx="22" fill="url(#g)"/>
+  <circle cx="560" cy="110" r="46" fill="#fff" opacity=".18"/>
+  <circle cx="380" cy="240" r="60" fill="#fff" opacity=".12"/>
+  <!-- floating chart card -->
+  <g filter="url(#s)">
+    <rect x="356" y="104" width="150" height="96" rx="14" fill="#fff"/>
+  </g>
+  <rect x="370" y="118" width="40" height="6" rx="3" fill="#b5b5b0"/>
+  <text x="370" y="144" font-size="18" font-weight="700" fill="#141414">+38%</text>
+  <polyline points="370,182 392,170 412,176 432,158 452,164 472,146 492,150" fill="none" stroke="#8c7bff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- floating toggle chip -->
+  <g filter="url(#s)">
+    <rect x="470" y="212" width="122" height="38" rx="19" fill="#fff"/>
+  </g>
+  <rect x="482" y="222" width="34" height="18" rx="9" fill="#b9f27c"/>
+  <circle cx="507" cy="231" r="7" fill="#141414"/>
+  <rect x="526" y="228" width="54" height="6" rx="3" fill="#555"/>
+  <!-- cursor -->
+  <path d="M520 168l0 26 7-7 5 11 5-2-5-11 10 0z" fill="#141414" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- feature cards -->
+  <g>
+    <rect x="28" y="298" width="182" height="82" rx="16" fill="#f2f2f0"/>
+    <rect x="42" y="312" width="26" height="26" rx="8" fill="#141414"/>
+    <path d="M49 325h12M55 319v12" stroke="#b9f27c" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="42" y="348" width="96" height="7" rx="3.5" fill="#141414"/>
+    <rect x="42" y="362" width="140" height="6" rx="3" fill="#c9c9c5"/>
+  </g>
+  <g>
+    <rect x="229" y="298" width="182" height="82" rx="16" fill="#141414"/>
+    <rect x="243" y="312" width="26" height="26" rx="8" fill="#b9f27c"/>
+    <path d="M250 326l4 4 8-9" fill="none" stroke="#141414" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="243" y="348" width="84" height="7" rx="3.5" fill="#fff"/>
+    <rect x="243" y="362" width="136" height="6" rx="3" fill="#555"/>
+  </g>
+  <g>
+    <rect x="430" y="298" width="182" height="82" rx="16" fill="#f2f2f0"/>
+    <rect x="444" y="312" width="26" height="26" rx="8" fill="url(#g)"/>
+    <circle cx="457" cy="325" r="5" fill="none" stroke="#fff" stroke-width="2.5"/>
+    <rect x="444" y="348" width="104" height="7" rx="3.5" fill="#141414"/>
+    <rect x="444" y="362" width="128" height="6" rx="3" fill="#c9c9c5"/>
+  </g>
+</svg>

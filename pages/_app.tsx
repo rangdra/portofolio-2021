@@ -1,22 +1,18 @@
 import "../styles/globals.css";
-import "tailwindcss/tailwind.css";
-import { AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "next-themes";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import PromoBanner from "../components/PromoBanner";
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps }) {
   return (
-    <div className="min-h-screen flex flex-col bg-canvas text-ink">
-      <PromoBanner />
+    // follows the OS setting until the visitor picks a theme; the choice is kept in localStorage
+    <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange>
       <Navbar />
-      <main className="flex-1">
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
+      <main id="top">
+        <Component {...pageProps} />
       </main>
       <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
 
