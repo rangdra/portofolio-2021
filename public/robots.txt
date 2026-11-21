@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://rangdrap.vercel.app
+Host: https://rangdra.my.id
 
 # Sitemaps
-Sitemap: https://rangdrap.vercel.app/sitemap.xml
+Sitemap: https://rangdra.my.id/sitemap.xml

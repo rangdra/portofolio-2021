@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: 'https://rangdrap.vercel.app',
+  siteUrl: 'https://rangdra.my.id',
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,

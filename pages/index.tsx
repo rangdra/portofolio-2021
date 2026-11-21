@@ -22,7 +22,7 @@ const stack = Array.from(new Set([...frontendSkills, ...backendSkills].map((s) =
 
 const Home = () => {
   const router = useRouter();
-  const siteUrl = "https://rangdrap.vercel.app";
+  const siteUrl = "https://rangdra.my.id";
   const currentUrl = `${siteUrl}${router.asPath}`;
   const root = useRef<HTMLDivElement>(null);
 
