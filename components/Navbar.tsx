@@ -34,7 +34,7 @@ const Navbar = () => (
   <header className="nav">
     <a href="/#about" className="logo" aria-label="Rangdra Pangestu — Home">
       <img className="logo-mark" src="/favicon.svg" alt="" width={30} height={30} />
-      RANGDRA PANGESTU
+      <span className="logo-text">RANGDRA PANGESTU</span>
     </a>
     <nav className="menu" aria-label="Primary">
       {navItems.map((item) => (

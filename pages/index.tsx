@@ -15,6 +15,40 @@ const CV = "/assets/CV Rangdra Pangestu - Software Engineer.pdf";
 // first six are the client projects, shown in the pinned "work" stage
 const featured = projectsData.slice(0, 6);
 const gradients = ["c-violet", "c-rose", "c-amber", "c-lime", "c-sky", "c-peach"];
+// structured data so search engines know this site is Rangdra Pangestu's
+const SITE = "https://rangdra.my.id";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE}/#person`,
+      name: "Rangdra Pangestu",
+      alternateName: "Rangdra",
+      url: `${SITE}/`,
+      image: `${SITE}/me.jpg`,
+      jobTitle: "Full-Stack & Mobile Software Engineer",
+      worksFor: { "@type": "Organization", name: "PT. Vanz Inovatif Teknologi" },
+      alumniOf: { "@type": "CollegeOrUniversity", name: "STMIK Pranata Indonesia" },
+      address: { "@type": "PostalAddress", addressLocality: "Bekasi", addressCountry: "ID" },
+      email: "mailto:rangdra2@gmail.com",
+      sameAs: [
+        "https://github.com/rangdra",
+        "https://www.linkedin.com/in/rangdra-pangestu-7b991219a/",
+        "https://www.instagram.com/rngdr_",
+      ],
+      knowsAbout: ["TypeScript", "React", "Next.js", "React Native", "Node.js", "NestJS", "PostgreSQL", "MongoDB"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: "Rangdra Pangestu",
+      publisher: { "@id": `${SITE}/#person` },
+    },
+  ],
+};
+
 // rows shown before "Show all"
 const LIST_LIMIT = 8;
 // TypeScript sits in both skill lists
@@ -22,7 +56,7 @@ const stack = Array.from(new Set([...frontendSkills, ...backendSkills].map((s) =
 
 const Home = () => {
   const router = useRouter();
-  const siteUrl = "https://rangdra.my.id";
+  const siteUrl = SITE;
   const currentUrl = `${siteUrl}${router.asPath}`;
   const root = useRef<HTMLDivElement>(null);
 
@@ -284,11 +318,23 @@ const Home = () => {
         />
         <link rel="canonical" href={currentUrl} />
         <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Rangdra Pangestu" />
+        <meta property="og:image" content={`${SITE}/og-image.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Rangdra Pangestu — Full-Stack & Mobile Software Engineer" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rangdra Pangestu — Software Engineer" />
+        <meta name="twitter:image" content={`${SITE}/og-image.jpg`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
       {/* ─── HERO ─── */}
       <section className="hero" id="about">
         <h1 className="hero-title">
+          {/* the name sits in the h1 so search engines tie the page to it */}
+          <span className="hero-name">Rangdra Pangestu · Full-Stack &amp; Mobile Software Engineer</span>
           <span className="line"><span className="sans">Building Scalable</span></span>
           <span className="line indent"><span className="serif">Digital Products</span></span>
         </h1>

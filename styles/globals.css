@@ -113,6 +113,7 @@ button { font: inherit; color: inherit; }
 .hero { position: relative; height: 100vh; min-height: 720px; padding: 92px var(--gutter) 0; overflow: hidden; }
 .hero-title, .hero-bottom h2 { font-size: clamp(56px, 7.8vw, 120px); line-height: .95; position: relative; z-index: 2; }
 .hero-title .indent { padding-left: .45em; }
+.hero-name { display: block; margin-bottom: 18px; font-family: var(--sans); font-stretch: 100%; font-weight: 500; font-size: 13px; line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .hero-pill {
   position: absolute; left: 7%; top: 44%; width: 84%; height: clamp(160px, 20vw, 290px);
   border-radius: 999px; overflow: hidden; transform: rotate(-9deg); z-index: 1;
@@ -387,6 +388,12 @@ button { font: inherit; color: inherit; }
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
   .menu { display: none; }
+}
+.logo-text, .btn-dark { white-space: nowrap; }
+/* phones: the monogram alone (the name is right below in the hero) */
+@media (max-width: 480px) {
+  .logo { padding: 6px; }
+  .logo-text { display: none; }
 }
 @media (max-width: 820px) {
   .hero-pill { top: 40%; left: -10%; width: 120%; }
