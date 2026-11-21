@@ -27,7 +27,7 @@ const jsonLd = {
       alternateName: "Rangdra",
       url: `${SITE}/`,
       image: `${SITE}/me.jpg`,
-      jobTitle: "Full-Stack & Mobile Software Engineer",
+      jobTitle: "Software Engineer",
       worksFor: { "@type": "Organization", name: "PT. Vanz Inovatif Teknologi" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "STMIK Pranata Indonesia" },
       address: { "@type": "PostalAddress", addressLocality: "Bekasi", addressCountry: "ID" },
@@ -306,15 +306,15 @@ const Home = () => {
   return (
     <div ref={root}>
       <Head>
-        <title>Rangdra Pangestu — Full-Stack & Mobile Software Engineer</title>
+        <title>Rangdra Pangestu — Software Engineer</title>
         <meta
           name="description"
-          content="Full-Stack & Mobile Software Engineer specializing in TypeScript, React, Next.js, React Native, Node.js, NestJS, and PostgreSQL. View projects, experience, and contact info."
+          content="Software Engineer specializing in TypeScript, React, Next.js, React Native, Node.js, NestJS, and PostgreSQL. View projects, experience, and contact info."
         />
         <meta property="og:title" content="Rangdra Pangestu — Software Engineer" />
         <meta
           property="og:description"
-          content="Full-Stack & Mobile Software Engineer crafting high-performance digital products."
+          content="Software Engineer crafting high-performance digital products."
         />
         <link rel="canonical" href={currentUrl} />
         <meta property="og:url" content={currentUrl} />
@@ -323,7 +323,7 @@ const Home = () => {
         <meta property="og:image" content={`${SITE}/og-image.jpg`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Rangdra Pangestu — Full-Stack & Mobile Software Engineer" />
+        <meta property="og:image:alt" content="Rangdra Pangestu — Software Engineer" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Rangdra Pangestu — Software Engineer" />
         <meta name="twitter:image" content={`${SITE}/og-image.jpg`} />
@@ -334,7 +334,7 @@ const Home = () => {
       <section className="hero" id="about">
         <h1 className="hero-title">
           {/* the name sits in the h1 so search engines tie the page to it */}
-          <span className="hero-name">Rangdra Pangestu · Full-Stack &amp; Mobile Software Engineer</span>
+          <span className="hero-name">Rangdra Pangestu · Software Engineer</span>
           <span className="line"><span className="sans">Building Scalable</span></span>
           <span className="line indent"><span className="serif">Digital Products</span></span>
         </h1>
@@ -347,7 +347,7 @@ const Home = () => {
             <span className="line"><span className="serif">Matter.</span></span>
           </h2>
           <p className="hero-copy">
-            Hi, I'm <strong>Rangdra Pangestu</strong> — a Full-Stack &amp; Mobile Software Engineer
+            Hi, I'm <strong>Rangdra Pangestu</strong> — a Software Engineer
             in Bekasi, Indonesia. <a href={CV} download>Download CV ↓</a>
           </p>
         </div>
@@ -380,7 +380,7 @@ $ _`}</pre>
             <span className="art-bar">developer.ts</span>
             <pre>{`const engineer = {
   name: "Rangdra",
-  role: "Full-Stack",
+  role: "Software Engineer",
   stack: ["React",
     "NestJS", "RN"],
 };`}</pre>
