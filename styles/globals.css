@@ -174,7 +174,7 @@ button { font: inherit; color: inherit; }
 .process-center { position: relative; z-index: 2; max-width: 520px; text-align: center; display: grid; justify-items: center; gap: 22px; }
 .doc { position: relative; width: 84px; height: 108px; border: 3px solid var(--ink); background: var(--surface); padding: 14px 12px; display: grid; gap: 5px; align-content: start; }
 .doc i { display: block; height: 3px; background: var(--rule); }
-.doc .tag, .float figcaption { position: absolute; left: 50%; translate: -50% 0; font-size: 10px; background: #f6c8b4; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.doc .tag, .float figcaption { position: absolute; left: 50%; translate: -50% 0; font-size: 10px; background: #f6c8b4; color: #141414; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
 .doc .tag { bottom: -10px; }
 .process-text { font-size: clamp(22px, 2vw, 30px); line-height: 1.1; }
 .get { display: grid; gap: 2px; font-size: 13px; color: var(--muted); font-stretch: 100%; }
@@ -332,7 +332,8 @@ button { font: inherit; color: inherit; }
 .manifesto { position: relative; height: 280vh; }
 .mani-stage { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; }
 .mani-bg { position: absolute; inset: 0; clip-path: inset(8% 6% 8% 6% round 88px); }
-.mani-bg img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); }
+.mani-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); }
+.mani-bg .exp-dark { display: none; }
 .mani-cards { position: relative; display: grid; justify-items: center; gap: 16px; padding: 0 16px; }
 .not-card { width: min(600px, 92vw); background: rgba(11, 11, 11, .92); color: #fff; border-radius: 28px; padding: 18px 36px 28px; text-align: center; display: grid; justify-items: center; gap: 6px; }
 .exp-role { font-size: clamp(26px, 2.4vw, 36px); line-height: 1; margin: 4px 0 8px; }
@@ -378,6 +379,8 @@ button { font: inherit; color: inherit; }
 /* ---------- DARK THEME DETAILS ---------- */
 [data-theme="dark"] .logo-mark, [data-theme="dark"] .burst { border-radius: 23%; box-shadow: 0 0 0 1px var(--line); }
 [data-theme="dark"] .blob { opacity: .45; }
+[data-theme="dark"] .mani-bg .exp-light { display: none; }
+[data-theme="dark"] .mani-bg .exp-dark { display: block; }
 [data-theme="dark"] .project-preview { box-shadow: 0 24px 60px rgba(0, 0, 0, .6); }
 .theme-toggle {
   display: grid; place-items: center; width: 42px; height: 42px; border: 0; border-radius: 50%;

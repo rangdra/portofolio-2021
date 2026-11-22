@@ -614,7 +614,11 @@ export class PropertiesController {
       {/* ─── EXPERIENCE (pinned stage) ─── */}
       <section className="manifesto" id="experience">
         <div className="mani-stage">
-          <div className="mani-bg"><img src="/img/exp-bg.jpg" alt="" /></div>
+          <div className="mani-bg">
+            <img className="exp-light" src="/img/exp-bg.jpg" alt="" />
+            {/* dark theme reuses the work section's aurora */}
+            <img className="exp-dark" src="/img/work-bg.jpg" alt="" loading="lazy" />
+          </div>
           <div className="mani-cards">
             <div className="not-card exp-card">
               <span className="chip dark">Experience · Dec 2022 – Present</span>
