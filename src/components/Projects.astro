@@ -1,0 +1,130 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import ProjectDialog from "./ProjectDialog.astro";
+import ProjectsNavbar from "./ProjectsNavbar.astro";
+import { projects } from "../data";
+import { LIST_LIMIT } from "../projects";
+---
+
+<section class="projects" id="projects">
+  <div class="projects-head">
+    <h2 class="section-title"><span class="sans">More</span> <span class="serif">Projects</span></h2>
+    <ProjectsNavbar />
+  </div>
+  <div class="project-list-head" aria-hidden="true">
+    <span>#</span><span>Project</span><span>Type</span><span>Stack</span>
+  </div>
+  <ul class="project-list">
+    {projects.map((project, index) => <ProjectCard {project} {index} hidden={index >= LIST_LIMIT} />)}
+  </ul>
+  <button type="button" class="show-more" aria-expanded="false" hidden={projects.length <= LIST_LIMIT}>
+    <span>Show all {projects.length} projects</span>
+    <span aria-hidden="true">↓</span>
+  </button>
+  <p class="empty" hidden={projects.length !== 0}>No projects found for this category.</p>
+  <div class="project-preview" aria-hidden="true" data-visible="false"></div>
+  {projects.map((project) => <ProjectDialog {project} />)}
+</section>
+
+<script>
+  import { LIST_LIMIT } from "../projects";
+
+  const section = document.querySelector<HTMLElement>(".projects")!;
+  const list = section.querySelector<HTMLUListElement>(".project-list")!;
+  const rows = [...list.querySelectorAll<HTMLLIElement>(".project-row")];
+  const filters = [...section.querySelectorAll<HTMLButtonElement>("[data-filter]")];
+  const more = section.querySelector<HTMLButtonElement>(".show-more")!;
+  const empty = section.querySelector<HTMLElement>(".empty")!;
+  const preview = section.querySelector<HTMLDivElement>(".project-preview")!;
+  const canPreview = matchMedia("(hover: hover) and (min-width: 821px)");
+  const previewImage = new Image(340, 213);
+  previewImage.alt = "";
+  previewImage.decoding = "async";
+
+  let category = "projects";
+  let expanded = false;
+  let filtered = rows;
+
+  function renderRows() {
+    rows.forEach((row) => { row.hidden = true; });
+    filtered.forEach((row, index) => {
+      row.hidden = !expanded && index >= LIST_LIMIT;
+      row.style.setProperty("--i", String(index));
+      row.querySelector(".pr-num")!.textContent = String(index + 1).padStart(2, "0");
+    });
+    more.hidden = filtered.length <= LIST_LIMIT;
+    more.setAttribute("aria-expanded", String(expanded));
+    more.firstElementChild!.textContent = expanded ? "Show less" : `Show all ${filtered.length} projects`;
+    more.lastElementChild!.textContent = expanded ? "↑" : "↓";
+    empty.hidden = filtered.length !== 0;
+  }
+
+  function hidePreview() {
+    preview.dataset.visible = "false";
+    previewImage.remove();
+  }
+
+  filters.forEach((button) => button.addEventListener("click", () => {
+    const value = button.dataset.filter!;
+    if (category !== value) {
+      category = value;
+      filtered = rows.filter((row) => category === "projects" || row.dataset.categories!.split(" ").includes(category));
+      list.replaceChildren(...filtered);
+    }
+    expanded = false;
+    filters.forEach((filter) => {
+      const active = filter === button;
+      filter.classList.toggle("is-active", active);
+      filter.setAttribute("aria-pressed", String(active));
+    });
+    hidePreview();
+    renderRows();
+  }));
+
+  more.addEventListener("click", () => {
+    expanded = !expanded;
+    renderRows();
+  });
+
+  function showPreview(button: HTMLButtonElement) {
+    if (!canPreview.matches) return;
+    previewImage.src = button.dataset.preview!;
+    preview.append(previewImage);
+    preview.dataset.visible = "true";
+  }
+
+  rows.forEach((row) => {
+    const button = row.querySelector("button")!;
+    button.addEventListener("mouseenter", () => showPreview(button));
+    button.addEventListener("focus", () => showPreview(button));
+  });
+  list.addEventListener("mouseleave", hidePreview);
+  list.addEventListener("focusout", (event) => {
+    if (!(event.relatedTarget instanceof Node) || !list.contains(event.relatedTarget)) hidePreview();
+  });
+  list.addEventListener("mousemove", (event) => {
+    preview.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const opener = event.target.closest<HTMLButtonElement>("button[data-project]");
+    if (!opener) return;
+
+    const template = document.querySelector<HTMLTemplateElement>(`#project-${opener.dataset.project}`)!;
+    const dialog = template.content.querySelector("dialog")!.cloneNode(true) as HTMLDialogElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.append(dialog);
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    dialog.querySelector(".modal-close")!.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      dialog.remove();
+      document.body.style.overflow = previousOverflow;
+      opener.focus({ preventScroll: true });
+    }, { once: true });
+  });
+</script>

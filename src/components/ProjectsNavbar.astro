@@ -1,0 +1,20 @@
+---
+import { projects } from "../data";
+import { categoryLabel } from "../projects";
+import type { Category } from "../types";
+
+const filters: (Category | "projects")[] = ["projects", "WEB", "CMS", "API", "APP"];
+---
+
+<nav aria-label="Project filters" class="filters">
+  {filters.map((value) => {
+    const all = value === "projects";
+    const count = all ? projects.length : projects.filter((project) => project.category.includes(value)).length;
+    return (
+      <button type="button" data-filter={value} class:list={{ "is-active": all }} aria-pressed={all ? "true" : "false"}>
+        {all ? "All" : categoryLabel(value)}
+        <span class="count">{count}</span>
+      </button>
+    );
+  })}
+</nav>

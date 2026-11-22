@@ -1,0 +1,18 @@
+---
+import { readFile } from "node:fs/promises";
+import { Image } from "astro:assets";
+import { publicDir } from "astro:config/server";
+import { imageMetadata } from "astro/assets/utils";
+
+interface Props {
+  src: string;
+  alt: string;
+  loading?: "lazy" | "eager";
+}
+
+const { src, alt, loading = "lazy" } = Astro.props;
+const file = await readFile(new URL(`.${src}`, publicDir));
+const { width, height } = await imageMetadata(file, src);
+---
+
+<Image {src} {alt} {width} {height} {loading} decoding="async" />

@@ -1,0 +1,40 @@
+---
+import ProjectImage from "./ProjectImage.astro";
+import { categoryLabel, projectCover } from "../projects";
+import type { Project } from "../types";
+
+interface Props {
+  project: Project;
+  index: number;
+  hidden: boolean;
+}
+
+const { project: { id, name, image_path, description, category, key_points }, index, hidden } = Astro.props;
+---
+
+<li class="project-row" style={`--i: ${index}`} data-categories={category.join(" ")} {hidden}>
+  <button
+    type="button"
+    data-project={id}
+    data-preview={projectCover(image_path, 768)}
+    aria-label={`View details for ${name}`}
+    aria-haspopup="dialog"
+  >
+    <span class="pr-num">{String(index + 1).padStart(2, "0")}</span>
+    <span class="pr-thumb">
+      <ProjectImage src={projectCover(image_path, 192)} alt="" />
+    </span>
+    <span class="pr-main">
+      <span class="pr-name">{name}</span>
+      <span class="pr-desc">{description}</span>
+    </span>
+    <span class="pr-cats">
+      {category.map((cat) => <span>{categoryLabel(cat)}</span>)}
+    </span>
+    <span class="pr-stack">
+      {key_points.slice(0, 3).join(" · ")}
+      {key_points.length > 3 && <em> +{key_points.length - 3}</em>}
+    </span>
+    <span class="pr-arrow" aria-hidden="true">→</span>
+  </button>
+</li>
