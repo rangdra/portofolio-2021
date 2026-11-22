@@ -135,20 +135,20 @@ $ _`}</pre>
         <div class="art">
           <span class="art-bar">developer.ts</span>
           <pre>{`const engineer = {
-name: "Rangdra",
-role: "Software Engineer",
-stack: ["React",
-  "NestJS", "RN"],
+  name: "Rangdra",
+  role: "Software Engineer",
+  stack: ["React",
+    "NestJS", "RN"],
 };`}</pre>
         </div>
         <div class="art dark">
           <span class="art-bar"><b class="get-verb">GET</b> /api/projects</span>
           <pre>{`200 OK
 [{
-"name": "RE/MAX",
-"category": [
-  "WEB", "CMS",
-  "MOBILE", "API"]
+  "name": "RE/MAX",
+  "category": [
+    "WEB", "CMS",
+    "MOBILE", "API"]
 }]`}</pre>
         </div>
         <div class="art phone">
@@ -170,7 +170,7 @@ stack: ["React",
           <pre>{`SELECT name
 FROM projects
 WHERE 'APP'
-= ANY(category);`}</pre>
+  = ANY(category);`}</pre>
         </div>
         <div class="art dark ci">
           <span class="art-bar">pipeline</span>
@@ -196,10 +196,10 @@ WHERE 'APP'
           <span class="art-bar">properties.controller.ts</span>
           <pre>{`@Controller('properties')
 export class PropertiesController {
-@Get()
-findAll() {
-  return this.service.findAll();
-}
+  @Get()
+  findAll() {
+    return this.service.findAll();
+  }
 }`}</pre>
         </div>
         <figcaption>Backend</figcaption>
@@ -215,8 +215,8 @@ findAll() {
           <span class="art-bar"><b class="get-verb">POST</b> /v1/consultations</span>
           <pre>{`201 Created
 {
-"id": 1042,
-"status": "booked"
+  "id": 1042,
+  "status": "booked"
 }`}</pre>
         </div>
         <figcaption>API</figcaption>
