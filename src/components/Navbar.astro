@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+
+const navItems = [
+  { name: "Work", href: "/#work" },
+  { name: "Services", href: "/#services" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Contact", href: "/#contact" },
+];
+---
+
+<header class="nav">
+  <a href="/#about" class="logo" aria-label="Rangdra Pangestu — Home">
+    <Image class="logo-mark" src="/favicon.webp" alt="" width={30} height={30} loading="eager" />
+    <span class="logo-text">RANGDRA PANGESTU</span>
+  </a>
+  <nav class="menu" aria-label="Primary">
+    {navItems.map((item) => <a href={item.href}>{item.name}</a>)}
+  </nav>
+  <div class="nav-actions">
+    <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Dark mode">
+      <svg class="theme-moon" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+      <svg class="theme-sun" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    </button>
+    <a href="/#contact" class="btn-dark">
+      Hire me <span class="btn-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle")!;
+  const system = matchMedia("(prefers-color-scheme: dark)");
+  let preference = readPreference();
+
+  function readPreference() {
+    try {
+      return localStorage.getItem("theme");
+    } catch {
+      return null;
+    }
+  }
+
+  function applyTheme() {
+    const dark = preference === "dark" || (preference !== "light" && system.matches);
+    if (dark !== root.classList.contains("dark")) {
+      root.classList.add("theme-changing");
+      root.classList.toggle("dark", dark);
+      getComputedStyle(root).colorScheme;
+      root.classList.remove("theme-changing");
+    }
+    toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    toggle.title = dark ? "Light mode" : "Dark mode";
+  }
+
+  applyTheme();
+  system.addEventListener("change", applyTheme);
+  toggle.addEventListener("click", () => {
+    preference = root.classList.contains("dark") ? "light" : "dark";
+    try {
+      localStorage.setItem("theme", preference);
+    } catch {
+      // The toggle still works when storage is disabled.
+    }
+    applyTheme();
+  });
+  window.addEventListener("storage", (event) => {
+    if (event.key === "theme" || event.key === null) {
+      preference = readPreference();
+      applyTheme();
+    }
+  });
+</script>

@@ -1,0 +1,68 @@
+---
+// Decorative line art drawn behind a section. Paths are generated once from simple math
+const W = 1440;
+const H = 800;
+
+const f = (n: number) => n.toFixed(1);
+
+// gently crossing waves
+const waves = Array.from({ length: 8 }, (_, i) => {
+  const y = 110 + i * 62;
+  return `M-40 ${f(y)} C360 ${f(y - 95 + i * 7)}, 1080 ${f(y + 95 - i * 9)}, 1480 ${f(y + 12)}`;
+});
+
+// closed smooth loop through points (Catmull-Rom converted to cubic Béziers)
+const loop = (pts: [number, number][]) => {
+  const n = pts.length;
+  let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
+  for (let i = 0; i < n; i++) {
+    const [p0, p1, p2, p3] = [pts[(i - 1 + n) % n], pts[i], pts[(i + 1) % n], pts[(i + 2) % n]];
+    d += ` C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)}, ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)}, ${f(p2[0])} ${f(p2[1])}`;
+  }
+  return d + "Z";
+};
+
+// topographic contour rings around two "peaks"
+const contour = [
+  [230, 210, 0.4],
+  [1210, 600, 2.1],
+].flatMap(([cx, cy, seed]) =>
+  Array.from({ length: 7 }, (_, k) => {
+    const r = 46 + k * 48;
+    const pts = Array.from({ length: 12 }, (_, j): [number, number] => {
+      const a = (j / 12) * Math.PI * 2;
+      const rr = r * (1 + 0.13 * Math.sin(3 * a + k * 0.7 + seed) + 0.06 * Math.sin(5 * a + seed * 2));
+      return [cx + rr * Math.cos(a), cy + rr * 0.78 * Math.sin(a)];
+    });
+    return loop(pts);
+  }),
+);
+
+// lines flowing from the edges toward a ring around the call to action
+const converge = (() => {
+  // lines come only from the sides and stop on a wide ring, clear of the title and buttons
+  const [tx, ty, ring] = [720, 290, 330];
+  const starts: [number, number][] = [
+    ...[60, 200, 340, 480, 620].map((y): [number, number] => [-20, y]),
+    ...[60, 200, 340, 480, 620].map((y): [number, number] => [W + 20, y]),
+  ];
+  return starts.map(([sx, sy]) => {
+    const a = Math.atan2(sy - ty, sx - tx);
+    const [ex, ey] = [tx + ring * Math.cos(a), ty + ring * 0.45 * Math.sin(a)];
+    return `M${f(sx)} ${f(sy)} Q${f((sx + ex) / 2)} ${f(sy)}, ${f(ex)} ${f(ey)}`;
+  });
+})();
+
+const variants = { waves, contour, converge };
+
+interface Props {
+  variant: keyof typeof variants;
+}
+
+const { variant } = Astro.props;
+---
+
+<svg class={`alines alines-${variant}`} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <!-- A unit path length lets GSAP draw every path with the same dash values. -->
+  {variants[variant].map((d) => <path d={d} pathLength="1" />)}
+</svg>

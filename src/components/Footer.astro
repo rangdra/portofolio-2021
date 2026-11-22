@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import AbstractLines from "./AbstractLines.astro";
+
+const CV = "/assets/CV Rangdra Pangestu - Software Engineer.pdf";
+---
+
+<footer class="cta" id="contact">
+  <AbstractLines variant="converge" />
+  <h2 class="cta-title">
+    <span class="line"><span class="sans">Ready to build something</span></span>
+    <span class="line"><span class="serif">impactful together?</span></span>
+  </h2>
+  <div class="cta-actions">
+    <a class="btn-light" href="mailto:rangdra2@gmail.com">rangdra2@gmail.com</a>
+    <a class="btn-light ghost" href={CV} download>Download CV</a>
+  </div>
+  <div class="cta-land"><Image src="/img/cta-bg.webp" alt="" width={1920} height={720} loading="lazy" decoding="async" /></div>
+  <div class="footer">
+    <span>© {new Date().getFullYear()} Rangdra Pangestu · Bekasi, Indonesia</span>
+    <span>
+      <a href="https://github.com/rangdra" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/rangdra-pangestu-7b991219a/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+      <a href="https://www.instagram.com/rngdr_" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  function observeFooter() {
+    const footer = document.querySelector<HTMLElement>("footer.cta")!;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      void import("../scripts/scroll-motion").then(({ initFooterMotion }) => initFooterMotion(footer));
+    }, { rootMargin: "400px 0px" });
+    observer.observe(footer);
+  }
+
+  if (document.readyState === "complete") observeFooter();
+  else window.addEventListener("load", observeFooter, { once: true });
+</script>

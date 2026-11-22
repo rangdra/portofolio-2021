@@ -1,5 +1,6 @@
 /* Tailwind preflight only: the UI below is plain CSS ported from my-portofolio */
-@tailwind base;
+@import "tailwindcss" source("../");
+@custom-variant dark (&:where(html.dark, html.dark *));
 
 :root {
   --ink: #141414;
@@ -26,8 +27,9 @@
   --serif: "Instrument Serif", Didot, Georgia, serif;
 }
 
-/* dark theme: set on <html data-theme="dark"> by next-themes */
-[data-theme="dark"] {
+/* Set on the document root by the theme switcher. */
+html.dark {
+  color-scheme: dark;
   --ink: #f1f0ec;
   --muted: #a3a29d;
   --soft: #7c7b77;
@@ -49,7 +51,7 @@
   --menu-text: #c8c7c1;
 }
 
-html { scroll-behavior: smooth; }
+html { color-scheme: light; scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--ink);
@@ -292,7 +294,8 @@ button { font: inherit; color: inherit; }
 .empty { text-align: center; color: var(--muted); padding: 48px 0; }
 
 /* modal */
-.modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; background: rgba(20, 20, 20, .55); backdrop-filter: blur(6px); animation: fade .25s ease; }
+.modal[open] { width: 100%; height: 100%; max-width: none; max-height: none; color: inherit; position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; background: rgba(20, 20, 20, .55); backdrop-filter: blur(6px); animation: fade .25s ease; }
+.modal::backdrop { background: transparent; }
 .modal-box { position: relative; width: min(860px, 100%); max-height: 90vh; overflow: auto; background: var(--surface); border-radius: 28px; animation: rise .35s cubic-bezier(.16, 1, .3, 1); }
 .modal-close { position: absolute; top: 14px; right: 14px; z-index: 2; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgba(20,20,20,.75); color: #fff; font-size: 20px; cursor: pointer; }
 .modal-img { position: relative; aspect-ratio: 16 / 8; background: var(--pill); }
@@ -383,16 +386,19 @@ button { font: inherit; color: inherit; }
 @keyframes flow { to { stroke-dashoffset: -20; } }
 
 /* ---------- DARK THEME DETAILS ---------- */
-[data-theme="dark"] .logo-mark, [data-theme="dark"] .burst { border-radius: 23%; box-shadow: 0 0 0 1px var(--line); }
-[data-theme="dark"] .blob { opacity: .45; }
-[data-theme="dark"] .mani-bg .exp-light { display: none; }
-[data-theme="dark"] .mani-bg .exp-dark { display: block; }
-[data-theme="dark"] .project-preview { box-shadow: 0 24px 60px rgba(0, 0, 0, .6); }
+html.dark .logo-mark, html.dark .burst { border-radius: 23%; box-shadow: 0 0 0 1px var(--line); }
+html.dark .blob { opacity: .45; }
+html.dark .mani-bg .exp-light { display: none; }
+html.dark .mani-bg .exp-dark { display: block; }
+html.dark .project-preview { box-shadow: 0 24px 60px rgba(0, 0, 0, .6); }
 .theme-toggle {
   display: grid; place-items: center; width: 42px; height: 42px; border: 0; border-radius: 50%;
   background: var(--menu-bg); backdrop-filter: blur(12px); color: var(--ink); font-size: 18px; cursor: pointer;
   transition: transform .4s cubic-bezier(.16, 1, .3, 1), background .2s;
 }
+.theme-toggle .theme-sun, html.dark .theme-toggle .theme-moon { display: none; }
+html.dark .theme-toggle .theme-sun { display: block; }
+html.theme-changing *, html.theme-changing *::before, html.theme-changing *::after { transition: none !important; }
 .theme-toggle:hover { transform: rotate(-20deg) scale(1.06); background: var(--pill-hover); }
 .nav-actions { display: flex; align-items: center; gap: 10px; }
 
@@ -431,7 +437,7 @@ button { font: inherit; color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .blob, .modal, .modal-box, .project-row, .connectors path { animation: none; }
+  .blob, .modal[open], .modal-box, .project-row, .connectors path { animation: none; }
   .project-preview { transition: none; }
   .work, .manifesto { height: auto; }
   .work-stage { position: relative; height: auto; padding-bottom: 24px; }
