@@ -392,7 +392,7 @@ $ _`}</pre>
   "name": "RE/MAX",
   "category": [
     "WEB", "CMS",
-    "API"]
+    "MOBILE", "API"]
 }]`}</pre>
           </div>
           <div className="art phone">
