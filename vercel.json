@@ -1,0 +1,7 @@
+{
+  "framework": "astro",
+  "redirects": [
+    { "source": "/portofolio", "destination": "/#work", "statusCode": 301 },
+    { "source": "/resume", "destination": "/#experience", "statusCode": 301 }
+  ]
+}
