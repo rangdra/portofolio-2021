@@ -627,9 +627,7 @@ export class PropertiesController {
             <div className="is-card">
               <p><span className="sans">Bachelor of Computer</span><br /><span className="serif">Information System</span></p>
               <div className="is-imgs">
-                <img src="/projects/acai/acai.png" alt="" />
-                <img src="/projects/astraland/astraland.png" alt="" />
-                <img src="/projects/vines/vines-2.png" alt="" />
+                {projectsData.slice(0, 3).map((p) => <img key={p.id} src={p.image_path} alt="" />)}
               </div>
               <small>STMIK Pranata Indonesia · 2019 – 2023 · GPA 3.58 / 4.00</small>
               <small>Jabar Coding Camp (React.js) · 15+ completed projects</small>
