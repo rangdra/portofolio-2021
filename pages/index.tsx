@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import AbstractLines from "../components/AbstractLines";
-import ProjectCard, { categoryLabel } from "../components/ProjectCard";
+import ProjectCard, { categoryLabel, projectCover } from "../components/ProjectCard";
 import ProjectsNavbar from "../components/ProjectsNavbar";
 import { services, projects as projectsData, frontendSkills, backendSkills } from "../data";
 import { Category } from "../types";
@@ -26,7 +23,7 @@ const jsonLd = {
       name: "Rangdra Pangestu",
       alternateName: "Rangdra",
       url: `${SITE}/`,
-      image: `${SITE}/me.jpg`,
+      image: `${SITE}/me.webp`,
       jobTitle: "Software Engineer",
       worksFor: { "@type": "Organization", name: "PT. Vanz Inovatif Teknologi" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "STMIK Pranata Indonesia" },
@@ -64,12 +61,10 @@ const Home = () => {
   const [active, setActive] = useState("projects");
   const [showDetail, setShowDetail] = useState<string | number | null>(null);
   const [expanded, setExpanded] = useState(false);
-  // floating preview: which row is hovered, and whether its images may load yet
   const [hovered, setHovered] = useState<number | null>(null);
-  const [armed, setArmed] = useState(false);
   const preview = useRef<HTMLDivElement>(null);
-  const follow = useRef<{ x: (v: number) => void; y: (v: number) => void } | null>(null);
   const shown = expanded ? projects : projects.slice(0, LIST_LIMIT);
+  const hoveredProject = hovered === null ? undefined : shown[hovered];
 
   const handleFilterCategory = (category: Category | "projects") => {
     setExpanded(false);
@@ -87,214 +82,24 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (!preview.current) return;
-    follow.current = {
-      x: gsap.quickTo(preview.current, "x", { duration: 0.5, ease: "power3" }),
-      y: gsap.quickTo(preview.current, "y", { duration: 0.5, ease: "power3" }),
+    const section = root.current;
+    if (!section) return;
+
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
+    const loadMotion = () => {
+      void import("../components/scroll-motion").then(({ initHomeMotion }) => {
+        if (!cancelled) cleanup = initHomeMotion(section);
+      });
     };
-  }, []);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      /* HERO intro */
-      gsap.timeline({ defaults: { ease: "expo.out" } })
-        .from(".hero-title .line > span", { yPercent: 110, duration: 1.4, stagger: 0.12 }, 0.1)
-        .fromTo(".hero-pill",
-          { clipPath: "inset(0% 100% 0% 0% round 999px)" },
-          { clipPath: "inset(0% 0% 0% 0% round 999px)", duration: 2, ease: "expo.inOut" }, 0.3)
-        .from(".hero-pill img", { scale: 1.6, duration: 2.4 }, 0.3)
-        .from(".hero-bottom .line > span", { yPercent: 110, duration: 1.4, stagger: 0.12 }, 0.9)
-        .from(".hero-copy", { autoAlpha: 0, y: 20, duration: 1 }, 1.3);
+    if (window.scrollY > 0 || window.location.hash) loadMotion();
+    else window.addEventListener("scroll", loadMotion, { once: true });
 
-      const heroScroll = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
-      gsap.to(".hero-pill", { rotate: -3, yPercent: -40, scale: 1.08, ease: "none", scrollTrigger: heroScroll });
-      gsap.to(".hero-pill img", { xPercent: -6, ease: "none", scrollTrigger: heroScroll });
-      gsap.to(".hero-title", { yPercent: -40, autoAlpha: 0.2, ease: "none", scrollTrigger: heroScroll });
-
-      /* STATEMENT words */
-      gsap.fromTo(".statement .word", { opacity: 0.12 }, {
-        opacity: 1, stagger: 0.1, ease: "none",
-        scrollTrigger: { trigger: ".statement", start: "top 75%", end: "bottom 55%", scrub: true },
-      });
-      gsap.from(".problems li", {
-        autoAlpha: 0, y: 12, stagger: 0.08, duration: 0.8,
-        scrollTrigger: { trigger: ".problems", start: "top 85%" },
-      });
-
-      /* STRIP */
-      gsap.from(".strip-row > *", {
-        yPercent: 60, autoAlpha: 0, duration: 1.2, ease: "expo.out", stagger: 0.07,
-        scrollTrigger: { trigger: ".strip", start: "top 80%" },
-      });
-      gsap.fromTo(".strip-row", { xPercent: 8 }, {
-        xPercent: -8, ease: "none",
-        scrollTrigger: { trigger: ".strip", start: "top bottom", end: "bottom top", scrub: true },
-      });
-
-      /* SERVICES collage */
-      gsap.from(".float", {
-        scale: 0.6, autoAlpha: 0, rotate: () => gsap.utils.random(-12, 12), duration: 1.2,
-        ease: "back.out(1.6)", stagger: 0.1, scrollTrigger: { trigger: ".process", start: "top 70%" },
-      });
-      gsap.utils.toArray<HTMLElement>(".float").forEach((el) => {
-        gsap.to(el, {
-          yPercent: parseFloat(el.dataset.speed || "0") * 260, ease: "none",
-          scrollTrigger: { trigger: ".process", start: "top bottom", end: "bottom top", scrub: true },
-        });
-      });
-      gsap.from(".process-center > *", {
-        y: 40, autoAlpha: 0, stagger: 0.15, duration: 1, ease: "expo.out",
-        scrollTrigger: { trigger: ".process-center", start: "top 75%" },
-      });
-
-      /* FOCUS: icon spins with scroll, principles rise in */
-      gsap.fromTo(".burst", { rotate: -120, scale: 0.6 }, {
-        rotate: 120, scale: 1, ease: "none",
-        scrollTrigger: { trigger: ".finds", start: "top bottom", end: "bottom top", scrub: true },
-      });
-      gsap.from(".finds-head > *:not(.burst)", {
-        y: 30, autoAlpha: 0, stagger: 0.1, duration: 1, ease: "expo.out",
-        scrollTrigger: { trigger: ".finds", start: "top 70%" },
-      });
-      gsap.from(".principles li", {
-        y: 80, autoAlpha: 0, rotate: (i) => [-3, 2, -2][i], stagger: 0.12, duration: 1.2, ease: "expo.out",
-        scrollTrigger: { trigger: ".principles", start: "top 80%" },
-      });
-
-      /* WORK stage */
-      const column = document.querySelector<HTMLElement>(".work-column");
-      const work = gsap.timeline({
-        defaults: { ease: "none" },
-        scrollTrigger: { trigger: ".work", start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true },
-      });
-      work
-        .fromTo(".work-bg",
-          { clipPath: "inset(6% 6% 0% 6% round 88px)" },
-          { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 0.12 }, 0)
-        .fromTo(column, { y: 0 }, { y: () => -(column!.offsetHeight - window.innerHeight * 0.75), duration: 1 }, 0)
-        .to(".hills", { opacity: 1, duration: 0.15 }, 0.45)
-        .fromTo(".hills", { scale: 1.2 }, { scale: 1, duration: 0.55 }, 0.45);
-      gsap.utils.toArray<HTMLElement>(".pcard").forEach((card, i) => {
-        work.fromTo(card, { rotate: i % 2 ? 5 : -5, scale: 0.9 }, { rotate: 0, scale: 1, duration: 0.15 }, 0.02 + i * 0.13);
-      });
-
-      /* SKILLS */
-      gsap.from(".bring-title > span", {
-        yPercent: 60, autoAlpha: 0, duration: 1.2, ease: "expo.out", stagger: 0.12,
-        scrollTrigger: { trigger: ".bring", start: "top 65%" },
-      });
-      gsap.from(".tags li", {
-        scale: 0.6, autoAlpha: 0, duration: 0.7, ease: "back.out(2)", stagger: 0.05,
-        scrollTrigger: { trigger: ".tags", start: "top 85%" },
-      });
-      gsap.from(".sticker", {
-        scale: 0, rotate: -60, duration: 1.1, ease: "elastic.out(1, 0.5)", stagger: 0.12,
-        scrollTrigger: { trigger: ".bring", start: "top 55%" },
-      });
-      gsap.utils.toArray<HTMLElement>(".sticker").forEach((s, i) => {
-        gsap.to(s, { y: i % 2 ? 14 : -14, rotate: i % 2 ? 8 : -8, duration: 2.4 + i * 0.4, ease: "sine.inOut", yoyo: true, repeat: -1 });
-      });
-
-      /* EXPERIENCE stage */
-      const exp = gsap.timeline({
-        defaults: { ease: "none" },
-        scrollTrigger: { trigger: ".manifesto", start: "top top", end: "bottom bottom", scrub: 0.6 },
-      });
-      exp
-        .fromTo(".mani-bg",
-          { clipPath: "inset(8% 6% 8% 6% round 88px)" },
-          { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 0.25 }, 0)
-        .to(".mani-bg img", { scale: 1, duration: 1 }, 0)
-        .from(".mani-cards", { y: 140, duration: 0.25 }, 0);
-      gsap.utils.toArray<HTMLElement>(".not").forEach((line, i, all) => {
-        exp.to(line, { opacity: 1, duration: 0.08 }, 0.18 + i * 0.1);
-        if (i < all.length - 1) exp.to(line, { opacity: 0.45, duration: 0.08 }, 0.28 + i * 0.1);
-      });
-      exp.from(".is-card", { y: 200, autoAlpha: 0, duration: 0.2 }, 0.65)
-        .from(".is-imgs img", { scale: 0.5, stagger: 0.03, duration: 0.12 }, 0.75);
-
-      /* DECORATIVE LINES: each set draws itself in when its section enters */
-      gsap.utils.toArray<SVGSVGElement>(".alines").forEach((svg) => {
-        gsap.fromTo(svg.querySelectorAll("path"), { strokeDasharray: 1, strokeDashoffset: 1 }, {
-          strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: 0.07,
-          scrollTrigger: { trigger: svg.parentElement, start: "top 75%" },
-        });
-      });
-      gsap.from(".connectors path, .connectors circle", {
-        autoAlpha: 0, duration: 0.8, stagger: 0.08,
-        scrollTrigger: { trigger: ".process", start: "top 60%" },
-      });
-    }, root);
-
-    mm.add("(prefers-reduced-motion: reduce)", () => {
-      gsap.set(".hills", { opacity: 1 });
-      gsap.set(".work-bg, .mani-bg", { clipPath: "none" });
-      gsap.set(".not", { opacity: 1 });
-    }, root);
-
-    // images change section heights after hydration
-    const refresh = () => ScrollTrigger.refresh();
-    window.addEventListener("load", refresh);
     return () => {
-      window.removeEventListener("load", refresh);
-      mm.revert();
-    };
-  }, []);
-
-  useEffect(() => {
-    const section = document.querySelector<HTMLElement>(".process");
-    const hub = document.querySelector<HTMLElement>(".process .doc");
-    const block = document.querySelector<HTMLElement>(".process-center");
-    const cards = Array.from(document.querySelectorAll<HTMLElement>(".process .float"));
-    const paths = Array.from(document.querySelectorAll<SVGPathElement>(".connectors path"));
-    const dots = Array.from(document.querySelectorAll<SVGCircleElement>(".connectors circle"));
-    if (!section || !hub || !block || cards.length !== paths.length) return;
-
-    const update = () => {
-      const s = section.getBoundingClientRect();
-      const h = hub.getBoundingClientRect();
-      const hx = h.left + h.width / 2 - s.left;
-      const hy = h.top + h.height / 2 - s.top;
-      cards.forEach((card, i) => {
-        const c = card.getBoundingClientRect();
-        const cx = c.left + c.width / 2 - s.left;
-        const cy = c.top + c.height / 2 - s.top;
-        // leave the hub and enter the card on the sides that face each other
-        const sideways = Math.abs(cx - hx) > Math.abs(cy - hy);
-        // cards below leave from under the text block so the line never crosses the copy
-        const below = block.getBoundingClientRect().bottom - s.top + 8;
-        const [x1, y1] = sideways
-          ? [hx + Math.sign(cx - hx) * h.width / 2, hy]
-          : [hx, cy > hy ? below : hy - h.height / 2];
-        const [x2, y2] = sideways
-          ? [cx - Math.sign(cx - hx) * c.width / 2, cy]
-          : [cx, cy - Math.sign(cy - hy) * c.height / 2];
-        // bend just outside the text block's edge so the curve never runs behind the copy
-        const b = block.getBoundingClientRect();
-        const bendX = cx < hx
-          ? Math.min((x1 + x2) / 2, b.left - s.left - 24)
-          : Math.max((x1 + x2) / 2, b.right - s.left + 24);
-        const d = sideways
-          ? `M${x1} ${y1} C${bendX} ${y1}, ${bendX} ${y2}, ${x2} ${y2}`
-          : `M${x1} ${y1} C${x1} ${(y1 + y2) / 2}, ${x2} ${(y1 + y2) / 2}, ${x2} ${y2}`;
-        paths[i].setAttribute("d", d);
-        dots[i].setAttribute("cx", String(x2));
-        dots[i].setAttribute("cy", String(y2));
-      });
-    };
-
-    update();
-    const st = ScrollTrigger.create({
-      trigger: section, start: "top bottom", end: "bottom top",
-      onToggle: (self) => (self.isActive ? gsap.ticker.add(update) : gsap.ticker.remove(update)),
-    });
-    window.addEventListener("resize", update);
-    return () => {
-      st.kill();
-      gsap.ticker.remove(update);
-      window.removeEventListener("resize", update);
+      cancelled = true;
+      window.removeEventListener("scroll", loadMotion);
+      cleanup?.();
     };
   }, []);
 
@@ -320,13 +125,14 @@ const Home = () => {
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Rangdra Pangestu" />
-        <meta property="og:image" content={`${SITE}/og-image.jpg`} />
+        <meta property="og:image" content={`${SITE}/og-image.webp`} />
+        <meta property="og:image:type" content="image/webp" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Rangdra Pangestu — Software Engineer" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Rangdra Pangestu — Software Engineer" />
-        <meta name="twitter:image" content={`${SITE}/og-image.jpg`} />
+        <meta name="twitter:image" content={`${SITE}/og-image.webp`} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
@@ -339,7 +145,15 @@ const Home = () => {
           <span className="line indent"><span className="serif">Digital Products</span></span>
         </h1>
         <div className="hero-pill">
-          <img src="/img/hero.jpg" alt="" />
+          <img
+            src="/img/hero.webp"
+            srcSet="/img/hero-960.webp 960w, /img/hero-1600.webp 1600w, /img/hero.webp 2400w"
+            sizes="(max-width: 820px) 120vw, 84vw"
+            width={2400}
+            height={1000}
+            alt=""
+            {...{ fetchpriority: "high" }}
+          />
         </div>
         <div className="hero-bottom">
           <h2>
@@ -431,7 +245,7 @@ WHERE 'APP'
         <figure className="float f1" data-speed="-0.25">
           <div className="browser">
             <span className="browser-bar"><i /><i /><i /><em>yourproduct.app</em></span>
-            <img src="/img/ui-frontend.svg" alt="Landing page interface illustration" />
+            <img src="/img/ui-frontend.webp" alt="Landing page interface illustration" width={640} height={400} loading="lazy" decoding="async" />
           </div>
           <figcaption>Frontend</figcaption>
         </figure>
@@ -450,7 +264,7 @@ export class PropertiesController {
         </figure>
         <figure className="float f3" data-speed="-0.1">
           <div className="device">
-            <img src="/img/ui-mobile.svg" alt="Mobile app interface illustration" />
+            <img src="/img/ui-mobile.webp" alt="Mobile app interface illustration" width={360} height={720} loading="lazy" decoding="async" />
           </div>
           <figcaption>Mobile</figcaption>
         </figure>
@@ -468,7 +282,7 @@ export class PropertiesController {
         <figure className="float f5" data-speed="-0.3">
           <div className="browser">
             <span className="browser-bar"><i /><i /><i /><em>admin / dashboard</em></span>
-            <img src="/img/ui-cms.svg" alt="Admin dashboard interface illustration" />
+            <img src="/img/ui-cms.webp" alt="Admin dashboard interface illustration" width={640} height={400} loading="lazy" decoding="async" />
           </div>
           <figcaption>CMS</figcaption>
         </figure>
@@ -535,7 +349,7 @@ export class PropertiesController {
         <div className="work-stage">
           <div className="work-bg">
             <div className="sky" />
-            <img className="hills" src="/img/work-bg.jpg" alt="" />
+            <img className="hills" src="/img/work-bg.webp" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="work-column">
             <div className="title-card">
@@ -545,7 +359,7 @@ export class PropertiesController {
             {featured.map((p, i) => (
               <button type="button" className={`pcard ${gradients[i]}`} key={p.name} onClick={() => setShowDetail(p.id)}>
                 <h3>{p.name} <em>{p.category.map(categoryLabel).join(" · ").toLowerCase()}</em></h3>
-                <img src={p.image_path} alt={`${p.name} project`} />
+                <img src={projectCover(p.image_path, 768)} alt={`${p.name} project`} loading="lazy" decoding="async" />
               </button>
             ))}
           </div>
@@ -564,11 +378,9 @@ export class PropertiesController {
         <ul
           className="project-list"
           key={active}
-          onMouseEnter={() => setArmed(true)}
           onMouseLeave={() => setHovered(null)}
           onMouseMove={(e) => {
-            follow.current?.x(e.clientX);
-            follow.current?.y(e.clientY);
+            if (preview.current) preview.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
           }}
         >
           {shown.map((project, i) => (
@@ -583,12 +395,10 @@ export class PropertiesController {
           </button>
         )}
         {projects.length === 0 && <p className="empty">No projects found for this category.</p>}
-        <div className="project-preview" ref={preview} aria-hidden="true" data-visible={hovered !== null}>
-          {armed && shown.map((p, i) => (
-            <div key={p.id} className={`pp-img${hovered === i ? " is-on" : ""}`}>
-              <Image src={p.image_path} alt="" layout="fill" objectFit="cover" objectPosition="top" sizes="360px" />
-            </div>
-          ))}
+        <div className="project-preview" ref={preview} aria-hidden="true" data-visible={Boolean(hoveredProject)}>
+          {hoveredProject && (
+            <img src={projectCover(hoveredProject.image_path, 768)} alt="" loading="lazy" decoding="async" />
+          )}
         </div>
         {/* the stage cards above open the same modal, even when the list is filtered or collapsed */}
         {featured
@@ -615,9 +425,9 @@ export class PropertiesController {
       <section className="manifesto" id="experience">
         <div className="mani-stage">
           <div className="mani-bg">
-            <img className="exp-light" src="/img/exp-bg.jpg" alt="" />
+            <img className="exp-light" src="/img/exp-bg.webp" alt="" loading="lazy" decoding="async" />
             {/* dark theme reuses the work section's aurora */}
-            <img className="exp-dark" src="/img/work-bg.jpg" alt="" loading="lazy" />
+            <img className="exp-dark" src="/img/work-bg.webp" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="mani-cards">
             <div className="not-card exp-card">
@@ -631,7 +441,7 @@ export class PropertiesController {
             <div className="is-card">
               <p><span className="sans">Bachelor of Computer</span><br /><span className="serif">Information System</span></p>
               <div className="is-imgs">
-                {projectsData.slice(0, 3).map((p) => <img key={p.id} src={p.image_path} alt="" />)}
+                {projectsData.slice(0, 3).map((p) => <img key={p.id} src={projectCover(p.image_path, 192)} alt="" loading="lazy" decoding="async" />)}
               </div>
               <small>STMIK Pranata Indonesia · 2019 – 2023 · GPA 3.58 / 4.00</small>
               <small>Jabar Coding Camp (React.js) · 15+ completed projects</small>

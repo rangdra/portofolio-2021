@@ -33,7 +33,7 @@ const ThemeToggle = () => {
 const Navbar = () => (
   <header className="nav">
     <a href="/#about" className="logo" aria-label="Rangdra Pangestu — Home">
-      <img className="logo-mark" src="/favicon.svg" alt="" width={30} height={30} />
+      <img className="logo-mark" src="/favicon.webp" alt="" width={30} height={30} />
       <span className="logo-text">RANGDRA PANGESTU</span>
     </a>
     <nav className="menu" aria-label="Primary">

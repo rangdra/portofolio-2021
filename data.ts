@@ -1,25 +1,8 @@
-import { RiComputerLine } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
-import { FaMobileAlt, FaReact, FaServer } from "react-icons/fa";
-import {
-  SiBootstrap,
-  SiMongodb,
-  SiNestjs,
-  SiNodedotjs,
-  SiPostgresql,
-  SiPostman,
-  SiSass,
-  SiStyledcomponents,
-  SiTailwindcss,
-  SiTypescript,
-} from "react-icons/si";
-import { AiFillHtml5, AiOutlineApi, AiOutlineAntDesign } from "react-icons/ai";
-
 import { Project, Service, Skill } from "./types";
 
 const services: Service[] = [
   {
-    Icon: RiComputerLine,
     title: "Frontend Development",
     about:
       "Building a Single Page Application using <b>HTML, CSS </b> dan <b>React JS</b>.",
@@ -27,7 +10,6 @@ const services: Service[] = [
     //   'Build beautiful and responsive SPAs using <b>HTML, CSS </B> and <b>React JS</b>.',
   },
   {
-    Icon: FaServer,
     title: "Backend Development",
     // about:
     //     'handle database, server, api menggunakan <b>Express </b> & populer frameworks lainnya.',
@@ -35,12 +17,10 @@ const services: Service[] = [
       "Handle database, server, api using <b>Express Js, Nest Js</b> & other popular frameworks.",
   },
   {
-    Icon: FaMobileAlt,
     title: "Mobile Development",
     about: "Build and Develop Mobile Application using <b>React Native</b>",
   },
   {
-    Icon: AiOutlineApi,
     title: "API Development",
     // about: 'Membangun dan Mengembangkan REST API menggunakan <b>Node API</b>.',
     about: "Build and Develop REST API using <b>Node Js</b>.",
@@ -49,47 +29,38 @@ const services: Service[] = [
 
 const frontendSkills: Skill[] = [
   {
-    Icon: AiFillHtml5,
     name: "HTML, CSS, JavaScript",
     level: "100%",
   },
   {
-    Icon: SiTypescript,
     name: "TypeScript",
     level: "100%",
   },
   {
-    Icon: FaReact,
     name: "React: CRA and NextJs",
     level: "100%",
   },
   {
-    Icon: FaReact,
     name: "React Native",
     level: "100%",
   },
   {
-    Icon: SiTailwindcss,
     name: "Tailwind CSS",
     level: "100%",
   },
   {
-    Icon: SiBootstrap,
     name: "Bootstrap",
     level: "100%",
   },
   {
-    Icon: AiOutlineAntDesign,
     name: "Ant Design",
     level: "100%",
   },
   {
-    Icon: SiSass,
     name: "SASS",
     level: "100%",
   },
   {
-    Icon: SiStyledcomponents,
     name: "Styled-Components",
     level: "100%",
   },
@@ -97,32 +68,26 @@ const frontendSkills: Skill[] = [
 
 const backendSkills: Skill[] = [
   {
-    Icon: SiTypescript,
     name: "TypeScript",
     level: "100%",
   },
   {
-    Icon: SiNodedotjs,
     name: "ExpressJs",
     level: "100%",
   },
   {
-    Icon: SiNestjs,
     name: "NestJs",
     level: "100%",
   },
   {
-    Icon: SiMongodb,
     name: "Mongo DB",
     level: "100%",
   },
   {
-    Icon: SiPostgresql,
     name: "PostgreSQL",
     level: "100%",
   },
   {
-    Icon: SiPostman,
     name: "Postman",
     level: "100%",
   },
@@ -394,7 +359,7 @@ const backendSkills: Skill[] = [
 //     {
 //         id: 19,
 //         name: 'Go-Travel',
-//         image_path: '/go-travel.PNG',
+//         image_path: '/go-travel.webp',
 //         deployed_url: 'https://angry-nightingale-2dc060.netlify.app/',
 //         github_url: 'https://github.com/rangdra/travel-landing-page',
 //         category: ['landing page'],
@@ -451,18 +416,18 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "RE/MAX",
-    image_path: "/projects/remax/web-home.jpg",
+    image_path: "/projects/remax/web-home.webp",
     images: [
-      "/projects/remax/web-home.jpg",
-      "/projects/remax/web-properties.jpg",
-      "/projects/remax/web-detail.jpg",
-      "/projects/remax/mobile-1.jpg",
-      "/projects/remax/mobile-2.jpg",
-      "/projects/remax/mobile-3.jpg",
-      "/projects/remax/mobile-4.jpg",
-      "/projects/remax/mobile-5.jpg",
-      "/projects/remax/mobile-6.jpg",
-      "/projects/remax/mobile-7.jpg",
+      "/projects/remax/web-home.webp",
+      "/projects/remax/web-properties.webp",
+      "/projects/remax/web-detail.webp",
+      "/projects/remax/mobile-1.webp",
+      "/projects/remax/mobile-2.webp",
+      "/projects/remax/mobile-3.webp",
+      "/projects/remax/mobile-4.webp",
+      "/projects/remax/mobile-5.webp",
+      "/projects/remax/mobile-6.webp",
+      "/projects/remax/mobile-7.webp",
     ],
     deployed_url: "https://remax.co.id/",
     github_url: null,
@@ -483,7 +448,7 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "Astraland",
-    image_path: "/projects/astraland/astraland.png",
+    image_path: "/projects/astraland/astraland.webp",
     deployed_url: null,
     github_url: null,
     category: ["WEB", "CMS", "API"],
@@ -501,7 +466,7 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "Medeasy",
-    image_path: "/projects/medeasy/medeasy.png",
+    image_path: "/projects/medeasy/medeasy.webp",
     deployed_url: "https://medeasy.ph/",
     github_url: null,
     category: ["WEB", "CMS", "APP", "API"],
@@ -519,12 +484,12 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "AIDO MCU",
-    image_path: "/projects/mcu/mcu-home.jpg",
+    image_path: "/projects/mcu/mcu-home.webp",
     images: [
-      "/projects/mcu/mcu-home.jpg",
-      "/projects/mcu/mcu-appointment.jpg",
-      "/projects/mcu/mcu-worklist.jpg",
-      "/projects/mcu/mcu-laporan.jpg",
+      "/projects/mcu/mcu-home.webp",
+      "/projects/mcu/mcu-appointment.webp",
+      "/projects/mcu/mcu-worklist.webp",
+      "/projects/mcu/mcu-laporan.webp",
     ],
     deployed_url: null,
     github_url: null,
@@ -536,21 +501,21 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "Ziswaf",
-    image_path: "/projects/ziswaf/ziswaf-home-1.jpg",
+    image_path: "/projects/ziswaf/ziswaf-home-1.webp",
     images: [
-      "/projects/ziswaf/ziswaf-home-1.jpg",
-      "/projects/ziswaf/ziswaf-home-2.jpg",
-      "/projects/ziswaf/ziswaf-home-3.jpg",
-      "/projects/ziswaf/ziswaf-zakat.jpg",
-      "/projects/ziswaf/ziswaf-jenis-harta.jpg",
-      "/projects/ziswaf/ziswaf-atur-menu.jpg",
-      "/projects/ziswaf/ziswaf-atur-menu-2.jpg",
-      "/projects/ziswaf/ziswaf-1.jpg",
-      "/projects/ziswaf/ziswaf-2.jpg",
-      "/projects/ziswaf/ziswaf-3.jpg",
-      "/projects/ziswaf/ziswaf-4.jpg",
-      "/projects/ziswaf/ziswaf-5.jpg",
-      "/projects/ziswaf/ziswaf-6.jpg",
+      "/projects/ziswaf/ziswaf-home-1.webp",
+      "/projects/ziswaf/ziswaf-home-2.webp",
+      "/projects/ziswaf/ziswaf-home-3.webp",
+      "/projects/ziswaf/ziswaf-zakat.webp",
+      "/projects/ziswaf/ziswaf-jenis-harta.webp",
+      "/projects/ziswaf/ziswaf-atur-menu.webp",
+      "/projects/ziswaf/ziswaf-atur-menu-2.webp",
+      "/projects/ziswaf/ziswaf-1.webp",
+      "/projects/ziswaf/ziswaf-2.webp",
+      "/projects/ziswaf/ziswaf-3.webp",
+      "/projects/ziswaf/ziswaf-4.webp",
+      "/projects/ziswaf/ziswaf-5.webp",
+      "/projects/ziswaf/ziswaf-6.webp",
     ],
     deployed_url: null,
     github_url: null,
@@ -562,7 +527,7 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "Vines",
-    image_path: "/projects/vines/vines.png",
+    image_path: "/projects/vines/vines.webp",
     deployed_url: "https://vines-indonesia.com/",
     github_url: null,
     category: ["WEB", "CMS", "APP"],
@@ -578,7 +543,7 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "LED Borobudur Marathon",
-    image_path: "/projects/bormar/led-bormar.jpg",
+    image_path: "/projects/bormar/led-bormar.webp",
     deployed_url: null,
     github_url: null,
     category: ["WEB"],
@@ -589,7 +554,7 @@ const projects: Project[] = [
   {
     id: uuidv4(),
     name: "Gudang Acai",
-    image_path: "/projects/acai/acai.png",
+    image_path: "/projects/acai/acai.webp",
     deployed_url: null,
     github_url: null,
     category: ["CMS"],
@@ -672,7 +637,7 @@ const projects: Project[] = [
 //   {
 //     id: uuidv4(),
 //     name: "Go-Travel",
-//     image_path: "/go-travel.PNG",
+//     image_path: "/go-travel.webp",
 //     deployed_url: "https://angry-nightingale-2dc060.netlify.app/",
 //     github_url: "https://github.com/rangdra/travel-landing-page",
 //     category: ["WEB"],

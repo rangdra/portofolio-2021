@@ -5,36 +5,32 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap"
-          />
-          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="preload" href="/fonts/instrument-sans-basic.woff2" as="font" type="font/woff2" crossOrigin="" />
+          <link rel="preload" href="/fonts/instrument-serif-italic-basic.woff2" as="font" type="font/woff2" crossOrigin="" />
+          <link rel="icon" type="image/webp" href="/favicon.webp" sizes="128x128" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link
             rel="icon"
-            type="image/png"
-            href="/icon-196x196.png"
+            type="image/webp"
+            href="/icon-196x196.webp"
             sizes="196x196"
           />
           <link
             rel="icon"
-            type="image/png"
-            href="/icon-96x96.png"
+            type="image/webp"
+            href="/icon-96x96.webp"
             sizes="96x96"
           />
           <link
             rel="icon"
-            type="image/png"
-            href="/icon-32x32.png"
+            type="image/webp"
+            href="/icon-32x32.webp"
             sizes="32x32"
           />
           <link
             rel="icon"
-            type="image/png"
-            href="/icon-16x16.png"
+            type="image/webp"
+            href="/icon-16x16.webp"
             sizes="16x16"
           />
           <meta name="theme-color" content="#ffffff" />

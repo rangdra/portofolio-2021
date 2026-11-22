@@ -1,11 +1,12 @@
 import { FunctionComponent, useEffect } from "react";
-import Image from "next/image";
 import { AiFillGithub } from "react-icons/ai";
 import { HiExternalLink } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { Category, Project } from "../types";
 
 export const categoryLabel = (c: Category) => (c === "APP" ? "MOBILE" : c);
+// Each project cover has a 192px thumbnail and a 768px preview alongside the full image.
+export const projectCover = (src: string, width: 192 | 768) => src.replace(/\.webp$/, `-${width}.webp`);
 
 const ProjectCard: FunctionComponent<{
   project: Project;
@@ -61,7 +62,7 @@ const ProjectCard: FunctionComponent<{
             <span className="pr-num">{String(index + 1).padStart(2, "0")}</span>
             {/* small screens show an inline thumbnail instead of the cursor preview */}
             <span className="pr-thumb">
-              <Image src={image_path} alt="" layout="fill" objectFit="cover" sizes="72px" />
+              <img src={projectCover(image_path, 192)} alt="" loading="lazy" decoding="async" />
             </span>
             <span className="pr-main">
               <span className="pr-name">{name}</span>
@@ -94,12 +95,12 @@ const ProjectCard: FunctionComponent<{
             {images && images.length > 1 ? (
               <div className="modal-gallery" tabIndex={0} aria-label={`${name} screenshots, scroll sideways`}>
                 {images.map((src, i) => (
-                  <img key={src} src={src} alt={`${name} screenshot ${i + 1}`} loading={i < 2 ? "eager" : "lazy"} />
+                  <img key={src} src={src} alt={`${name} screenshot ${i + 1}`} loading={i < 2 ? "eager" : "lazy"} decoding="async" />
                 ))}
               </div>
             ) : (
               <div className="modal-img">
-                <Image src={image_path} alt={name} layout="fill" objectFit="cover" sizes="(max-width: 900px) 100vw, 860px" />
+                <img src={image_path} alt={name} decoding="async" />
               </div>
             )}
             <div className="modal-body">

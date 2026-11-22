@@ -1,33 +1,35 @@
-import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useEffect, useRef } from "react";
 import AbstractLines from "./AbstractLines";
 
 const CV = "/assets/CV Rangdra Pangestu - Software Engineer.pdf";
 
 const Footer = () => {
+  const footer = useRef<HTMLElement>(null);
+
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.from(".cta-title .line > span", {
-        yPercent: 110, duration: 1.3, ease: "expo.out", stagger: 0.12,
-        scrollTrigger: { trigger: ".cta", start: "top 60%" },
+    const section = footer.current;
+    if (!section) return;
+
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      void import("./scroll-motion").then(({ initFooterMotion }) => {
+        if (!cancelled) cleanup = initFooterMotion(section);
       });
-      gsap.fromTo(".cta-land img", { yPercent: -18 }, {
-        yPercent: 0, ease: "none",
-        scrollTrigger: { trigger: ".cta", start: "top bottom", end: "bottom bottom", scrub: true },
-      });
-      gsap.fromTo(".cta .alines path", { strokeDasharray: 1, strokeDashoffset: 1 }, {
-        strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut", stagger: 0.06,
-        scrollTrigger: { trigger: ".cta", start: "top 70%" },
-      });
-    });
-    return () => mm.revert();
+    }, { rootMargin: "400px 0px" });
+    observer.observe(section);
+
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      cleanup?.();
+    };
   }, []);
 
   return (
-    <footer className="cta" id="contact">
+    <footer className="cta" id="contact" ref={footer}>
       <AbstractLines variant="converge" />
       <h2 className="cta-title">
         <span className="line"><span className="sans">Ready to build something</span></span>
@@ -37,7 +39,7 @@ const Footer = () => {
         <a className="btn-light" href="mailto:rangdra2@gmail.com">rangdra2@gmail.com</a>
         <a className="btn-light ghost" href={CV} download>Download CV</a>
       </div>
-      <div className="cta-land"><img src="/img/cta-bg.jpg" alt="" /></div>
+      <div className="cta-land"><img src="/img/cta-bg.webp" alt="" loading="lazy" decoding="async" /></div>
       <div className="footer">
         <span>© {new Date().getFullYear()} Rangdra Pangestu · Bekasi, Indonesia</span>
         <span>
