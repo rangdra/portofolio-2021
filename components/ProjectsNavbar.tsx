@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { Category } from "../types";
 import { projects } from "../data";
+import { categoryLabel } from "./ProjectCard";
 
 const allFilters: (Category | "projects")[] = [
   "projects",
@@ -26,7 +27,7 @@ const ProjectsNavbar: FunctionComponent<{
           className={active === value ? "is-active" : undefined}
           aria-pressed={active === value}
         >
-          {value === "projects" ? "All" : value}
+          {value === "projects" ? "All" : categoryLabel(value)}
           <span className="count">{count(value)}</span>
         </button>
       ))}

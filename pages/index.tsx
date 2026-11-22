@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import AbstractLines from "../components/AbstractLines";
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard, { categoryLabel } from "../components/ProjectCard";
 import ProjectsNavbar from "../components/ProjectsNavbar";
 import { services, projects as projectsData, frontendSkills, backendSkills } from "../data";
 import { Category } from "../types";
@@ -13,7 +13,7 @@ import { Category } from "../types";
 const CV = "/assets/CV Rangdra Pangestu - Software Engineer.pdf";
 
 // first six are the client projects, shown in the pinned "work" stage
-const featured = projectsData.slice(0, 6);
+const featured = projectsData.slice(0, 5);
 const gradients = ["c-violet", "c-rose", "c-amber", "c-lime", "c-sky", "c-peach"];
 // structured data so search engines know this site is Rangdra Pangestu's
 const SITE = "https://rangdra.my.id";
@@ -544,7 +544,7 @@ export class PropertiesController {
             </div>
             {featured.map((p, i) => (
               <button type="button" className={`pcard ${gradients[i]}`} key={p.name} onClick={() => setShowDetail(p.id)}>
-                <h3>{p.name} <em>{p.category.join(" · ").toLowerCase()}</em></h3>
+                <h3>{p.name} <em>{p.category.map(categoryLabel).join(" · ").toLowerCase()}</em></h3>
                 <img src={p.image_path} alt={`${p.name} project`} />
               </button>
             ))}

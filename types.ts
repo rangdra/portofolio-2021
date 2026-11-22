@@ -14,6 +14,8 @@ export interface Project {
   id: string | number;
   name: string;
   image_path: any;
+  // optional gallery for the detail modal; falls back to image_path
+  images?: string[];
   deployed_url: string | null;
   github_url: string | null;
   category: Category[];

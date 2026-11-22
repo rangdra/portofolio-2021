@@ -3,7 +3,9 @@ import Image from "next/image";
 import { AiFillGithub } from "react-icons/ai";
 import { HiExternalLink } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
-import { Project } from "../types";
+import { Category, Project } from "../types";
+
+export const categoryLabel = (c: Category) => (c === "APP" ? "MOBILE" : c);
 
 const ProjectCard: FunctionComponent<{
   project: Project;
@@ -24,6 +26,7 @@ const ProjectCard: FunctionComponent<{
     deployed_url,
     github_url,
     key_points,
+    images,
   },
   showDetail,
   setShowDetail,
@@ -65,7 +68,7 @@ const ProjectCard: FunctionComponent<{
               <span className="pr-desc">{description}</span>
             </span>
             <span className="pr-cats">
-              {category.map((cat) => <span key={cat}>{cat}</span>)}
+              {category.map((cat) => <span key={cat}>{categoryLabel(cat)}</span>)}
             </span>
             <span className="pr-stack">
               {key_points.slice(0, 3).join(" · ")}
@@ -88,12 +91,20 @@ const ProjectCard: FunctionComponent<{
             <button className="modal-close" onClick={() => setShowDetail(null)} aria-label="Close">
               <MdClose />
             </button>
-            <div className="modal-img">
-              <Image src={image_path} alt={name} layout="fill" objectFit="cover" sizes="(max-width: 900px) 100vw, 860px" />
-            </div>
+            {images && images.length > 1 ? (
+              <div className="modal-gallery" tabIndex={0} aria-label={`${name} screenshots, scroll sideways`}>
+                {images.map((src, i) => (
+                  <img key={src} src={src} alt={`${name} screenshot ${i + 1}`} loading={i < 2 ? "eager" : "lazy"} />
+                ))}
+              </div>
+            ) : (
+              <div className="modal-img">
+                <Image src={image_path} alt={name} layout="fill" objectFit="cover" sizes="(max-width: 900px) 100vw, 860px" />
+              </div>
+            )}
             <div className="modal-body">
               <div className="project-tags">
-                {category.map((cat) => <span key={cat} className="dark">{cat}</span>)}
+                {category.map((cat) => <span key={cat} className="dark">{categoryLabel(cat)}</span>)}
               </div>
               <h2><span className="sans">{name}</span></h2>
               <p>{description}</p>
